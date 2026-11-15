@@ -16,7 +16,7 @@
     --text: #342832;
     --muted: #81727c;
     --border: #f0dce5;
-    --shadow: 0 8px 28px rgba(120, 65, 90, 0.09);
+    --shadow: 0 8px 25px rgba(120,65,90,.09);
 }
 
 body.dark {
@@ -26,13 +26,13 @@ body.dark {
     --muted: #c2aebb;
     --border: #443342;
     --primary-light: #493040;
-    --shadow: 0 8px 28px rgba(0,0,0,.25);
+    --shadow: 0 8px 25px rgba(0,0,0,.25);
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
@@ -44,6 +44,11 @@ body {
     line-height: 1.6;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 button, input, select, textarea {
     font: inherit;
 }
@@ -51,11 +56,6 @@ button, input, select, textarea {
 button {
     cursor: pointer;
     border: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
 }
 
 header {
@@ -67,47 +67,42 @@ header {
     box-shadow: var(--shadow);
 }
 
+/* NAVBAR */
 .navbar {
-    min-height: 85px;
+    min-height: 100px;
+    padding: 5px 20px 5px 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 8px 20px 8px 5px;
+    gap: 15px;
 }
 
+/* BIG LOGO EXTREME LEFT */
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex-shrink: 0;
     margin-right: auto;
+    flex-shrink: 0;
 }
 
 .logo img {
-    width: 72px;
-    height: 72px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
 }
 
-.logo h2 {
+.logo span {
+    font-size: 32px;
+    font-weight: 800;
     color: var(--primary);
-    font-size: 25px;
-    line-height: 1.1;
-}
-
-.logo small {
-    color: var(--muted);
-    font-size: 11px;
-    display: block;
-    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 17px;
-    flex-wrap: wrap;
+    gap: 18px;
 }
 
 .nav-links a {
@@ -126,10 +121,27 @@ header {
     gap: 9px;
 }
 
+.icon-btn, .theme-btn, .menu-btn {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.menu-btn {
+    display: none;
+}
+
 .btn {
+    display: inline-block;
     background: var(--primary);
     color: white;
-    padding: 10px 17px;
+    padding: 10px 18px;
     border-radius: 9px;
     font-weight: 600;
     transition: .2s;
@@ -142,8 +154,8 @@ header {
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--primary);
     color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
 .btn-outline:hover {
@@ -151,21 +163,10 @@ header {
     color: var(--primary);
 }
 
-.theme-btn, .menu-btn {
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 18px;
-}
-
-.menu-btn {
-    display: none;
-}
-
+/* GENERAL SECTIONS */
 section {
     padding: 65px 7%;
-    scroll-margin-top: 95px;
+    scroll-margin-top: 110px;
 }
 
 .section-heading {
@@ -174,54 +175,13 @@ section {
 }
 
 .section-heading h2 {
-    font-size: 32px;
     color: var(--primary);
+    font-size: 32px;
     margin-bottom: 8px;
 }
 
 .section-heading p {
     color: var(--muted);
-}
-
-.hero {
-    min-height: 490px;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(120deg, var(--bg), var(--primary-light));
-}
-
-.hero-content {
-    max-width: 760px;
-}
-
-.eyebrow {
-    color: var(--primary);
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 13px;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 6vw, 64px);
-    line-height: 1.12;
-    margin: 15px 0;
-}
-
-.hero h1 span {
-    color: var(--primary);
-}
-
-.hero p {
-    color: var(--muted);
-    font-size: 18px;
-    max-width: 620px;
-    margin-bottom: 25px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
 }
 
 .grid {
@@ -258,16 +218,61 @@ section {
     margin-bottom: 15px;
 }
 
+/* SMALLER HERO / GATEWAY */
+.hero {
+    min-height: 340px;
+    padding: 40px 7%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, var(--bg), var(--primary-light));
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.15;
+    margin: 10px 0;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 550px;
+    margin-bottom: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* DASHBOARD */
 .stats .card {
     text-align: center;
 }
 
 .stat-number {
-    font-size: 32px;
     color: var(--primary);
+    font-size: 32px;
     font-weight: bold;
 }
 
+/* LEARNING TOOLS */
 .tool-panel, .career-detail {
     display: none;
     margin-top: 25px;
@@ -310,14 +315,14 @@ label {
 
 .tool-result {
     background: var(--primary-light);
-    border-radius: 10px;
     padding: 15px;
+    border-radius: 10px;
     margin-top: 15px;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
-.task-item, .note-item {
+.note-item, .task-item {
     padding: 12px;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -325,30 +330,22 @@ label {
     margin: 9px 0;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
     align-items: center;
-}
-
-.task-item span, .note-item span {
-    overflow-wrap: anywhere;
+    gap: 10px;
 }
 
 .small-btn {
-    padding: 6px 10px;
-    border-radius: 7px;
+    padding: 7px 11px;
     background: var(--primary-light);
     color: var(--primary);
-    font-weight: bold;
+    border-radius: 7px;
 }
 
 .career-detail ul {
     margin: 8px 0 18px 22px;
 }
 
-.career-detail li {
-    margin: 5px 0;
-}
-
+/* PROGRESS */
 .progress-track {
     height: 12px;
     background: var(--primary-light);
@@ -361,35 +358,9 @@ label {
     width: 35%;
     height: 100%;
     background: var(--primary);
-    border-radius: 20px;
 }
 
-.course-card .price {
-    color: var(--primary);
-    font-weight: bold;
-}
-
-.auth-area {
-    max-width: 560px;
-    margin: auto;
-}
-
-.auth-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.auth-tabs button {
-    flex: 1;
-}
-
-.form-message {
-    color: var(--primary);
-    margin: 10px 0;
-    font-size: 14px;
-}
-
+/* FOOTER */
 footer {
     background: var(--card);
     border-top: 1px solid var(--border);
@@ -406,67 +377,75 @@ footer strong {
     display: none !important;
 }
 
-@media(max-width: 1000px) {
-    .navbar {
-        flex-wrap: wrap;
-    }
-
+/* RESPONSIVE */
+@media(max-width: 1100px) {
     .menu-btn {
-        display: block;
+        display: inline-flex;
     }
 
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
+        padding: 20px;
+        background: var(--card);
         flex-direction: column;
         align-items: flex-start;
-        padding: 15px;
-        background: var(--card);
+        border-bottom: 1px solid var(--border);
     }
 
     .nav-links.show {
         display: flex;
     }
 
-    .nav-actions {
-        margin-left: auto;
+    header {
+        position: sticky;
     }
 }
 
 @media(max-width: 600px) {
     .navbar {
-        padding: 7px 10px 7px 3px;
-        gap: 8px;
+        min-height: 75px;
+        padding: 5px 8px 5px 3px;
+        gap: 7px;
     }
 
     .logo img {
-        width: 58px;
-        height: 58px;
+        width: 60px;
+        height: 60px;
     }
 
-    .logo h2 {
-        font-size: 20px;
+    .logo span {
+        font-size: 22px;
     }
 
-    .logo small {
-        font-size: 9px;
+    .nav-actions {
+        gap: 5px;
+    }
+
+    .icon-btn, .theme-btn, .menu-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .hero {
+        min-height: 290px;
+        padding: 32px 5%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
     }
 
     section {
         padding: 48px 5%;
     }
 
-    .hero {
-        min-height: 420px;
-    }
-
     .section-heading h2 {
         font-size: 27px;
-    }
-
-    .nav-actions .btn {
-        padding: 8px 10px;
-        font-size: 12px;
     }
 }
 </style>
@@ -475,46 +454,50 @@ footer strong {
 <body>
 
 <header>
-    <nav class="navbar">
+<nav class="navbar">
 
-        <!-- BIG LOGO AT EXTREME LEFT -->
-        <a href="#home" class="logo">
-            <img src="logo.png" alt="AI Nexus Logo"
-                 onerror="this.style.display='none'">
-            <div>
-                <h2>AI Nexus</h2>
-                <small>LEARN • GROW • ACHIEVE</small>
-            </div>
-        </a>
+    <a href="#home" class="logo">
+        <img src="logo.png" alt="AI Nexus Logo"
+             onerror="this.style.display='none'">
+        <span>AI Nexus</span>
+    </a>
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-        <div class="nav-links" id="navLinks">
-            <a href="#home" onclick="closeMenu()">Home</a>
-            <a href="#dashboard" onclick="closeMenu()">Dashboard</a>
-            <a href="#learning" onclick="closeMenu()">Learning</a>
-            <a href="#career" onclick="closeMenu()">Career</a>
-            <a href="#courses" onclick="closeMenu()">Courses</a>
-            <a href="#progress" onclick="closeMenu()">Progress</a>
-        </div>
+    <div class="nav-links" id="navLinks">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#dashboard" onclick="closeMenu()">Dashboard</a>
+        <a href="#learning" onclick="closeMenu()">Learning</a>
+        <a href="#career" onclick="closeMenu()">Career</a>
+        <a href="#courses" onclick="closeMenu()">Courses</a>
+        <a href="#progress" onclick="closeMenu()">Progress</a>
+    </div>
 
-        <div class="nav-actions">
-            <button class="theme-btn" onclick="toggleTheme()" title="Change theme">🌙</button>
-            <a href="#auth" class="btn btn-outline">Login</a>
-            <a href="#enrollment" class="btn">Enroll</a>
-        </div>
-    </nav>
+    <div class="nav-actions">
+        <a href="#home" class="icon-btn" title="Home">⌂</a>
+        <a href="auth.html" class="icon-btn" title="Login">👤</a>
+        <a href="enrollment.html" class="icon-btn" title="Student Enrollment">📝</a>
+        <button class="theme-btn" onclick="toggleTheme()" title="Theme">🌙</button>
+    </div>
+
+</nav>
 </header>
 
 <!-- HOME -->
 <section class="hero" id="home">
     <div class="hero-content">
         <span class="eyebrow">YOUR AI-POWERED LEARNING COMPANION</span>
-        <h1>From Confusion<br>to <span>Confidence.</span></h1>
+
+        <h1>
+            From Confusion<br>
+            to <span>Confidence.</span>
+        </h1>
+
         <p>
             Learn new skills, explore AI tools, discover career paths
             and build your future with AI Nexus.
         </p>
+
         <div class="hero-buttons">
             <a href="#learning" class="btn">Explore Learning</a>
             <a href="#career" class="btn btn-outline">Explore Careers</a>
@@ -534,28 +517,28 @@ footer strong {
             <div class="card-icon">📚</div>
             <div class="stat-number">06</div>
             <h3>Learning Tools</h3>
-            <p>Tools to support your study journey</p>
+            <p>Tools for your study journey</p>
         </div>
 
         <div class="card">
             <div class="card-icon">🎯</div>
             <div class="stat-number">06</div>
             <h3>Career Paths</h3>
-            <p>Explore different technology careers</p>
+            <p>Explore technology careers</p>
         </div>
 
         <div class="card">
             <div class="card-icon">🏆</div>
             <div class="stat-number">01</div>
-            <h3>Your Journey</h3>
-            <p>Start building your learning progress</p>
+            <h3>Learning Journey</h3>
+            <p>Start building your skills</p>
         </div>
 
         <div class="card">
             <div class="card-icon">⚡</div>
             <div class="stat-number">24/7</div>
             <h3>Learn Anytime</h3>
-            <p>Access your learning tools anytime</p>
+            <p>Access your learning tools</p>
         </div>
     </div>
 </section>
@@ -564,59 +547,59 @@ footer strong {
 <section id="learning">
     <div class="section-heading">
         <h2>AI Learning Hub</h2>
-        <p>Smart tools to make learning easier and more organised.</p>
+        <p>Smart tools to make learning easier.</p>
     </div>
 
     <div class="grid">
         <div class="card">
             <div class="card-icon">📝</div>
             <h3>Smart Notes</h3>
-            <p>Create and save your study notes in your browser.</p>
+            <p>Create and save your study notes.</p>
             <button class="btn" onclick="openTool('notesPanel')">Open Notes</button>
         </div>
 
         <div class="card">
             <div class="card-icon">📄</div>
-            <h3>TXT Document Extractor</h3>
-            <p>Upload a text file and read its extracted content.</p>
+            <h3>Document Extractor</h3>
+            <p>Read the content of TXT documents.</p>
             <button class="btn" onclick="openTool('documentPanel')">Extract Text</button>
         </div>
 
         <div class="card">
             <div class="card-icon">🧠</div>
             <h3>Quiz Generator</h3>
-            <p>Practise with sample questions on different topics.</p>
+            <p>Practise with sample topic questions.</p>
             <button class="btn" onclick="openTool('quizPanel')">Start Quiz</button>
         </div>
 
         <div class="card">
             <div class="card-icon">📅</div>
             <h3>Study Planner</h3>
-            <p>Organise your daily learning tasks.</p>
+            <p>Organise your study tasks.</p>
             <button class="btn" onclick="openTool('plannerPanel')">Open Planner</button>
         </div>
 
         <div class="card">
             <div class="card-icon">💡</div>
             <h3>Study Tips</h3>
-            <p>Get simple tips to improve your study routine.</p>
+            <p>Simple tips to improve your study routine.</p>
             <button class="btn" onclick="openTool('tipsPanel')">View Tips</button>
         </div>
 
         <div class="card">
             <div class="card-icon">🤖</div>
             <h3>AI Learning Assistant</h3>
-            <p>Get started with a simple study-topic helper.</p>
+            <p>Get a basic study guide for a topic.</p>
             <button class="btn" onclick="openTool('assistantPanel')">Open Assistant</button>
         </div>
     </div>
 
-    <!-- SMART NOTES -->
+    <!-- NOTES -->
     <div class="tool-panel" id="notesPanel">
         <h3>📝 Smart Notes</h3>
-        <label>Note title</label>
+        <label>Note Title</label>
         <input id="noteTitle" placeholder="Enter note title">
-        <label>Your notes</label>
+        <label>Your Notes</label>
         <textarea id="noteContent" placeholder="Write your notes here..."></textarea>
         <button class="btn" onclick="saveNote()">Save Note</button>
         <div id="notesList"></div>
@@ -625,16 +608,18 @@ footer strong {
     <!-- DOCUMENT EXTRACTOR -->
     <div class="tool-panel" id="documentPanel">
         <h3>📄 TXT Document Extractor</h3>
-        <p>Select a .txt file to display its text content.</p>
+        <p>Choose a TXT file to read its content.</p>
         <input type="file" id="textFile" accept=".txt">
         <button class="btn" onclick="extractText()">Extract Content</button>
-        <div class="tool-result" id="extractedText">Your extracted text will appear here.</div>
+        <div class="tool-result" id="extractedText">
+            Extracted text will appear here.
+        </div>
     </div>
 
     <!-- QUIZ -->
     <div class="tool-panel" id="quizPanel">
         <h3>🧠 Quiz Generator</h3>
-        <label>Select a topic</label>
+        <label>Select Topic</label>
         <select id="quizTopic">
             <option value="python">Python</option>
             <option value="ai">Artificial Intelligence</option>
@@ -657,20 +642,20 @@ footer strong {
     <div class="tool-panel" id="tipsPanel">
         <h3>💡 Study Tips</h3>
         <ul>
-            <li>Set a clear learning goal before you begin.</li>
+            <li>Set a clear learning goal.</li>
             <li>Break large topics into smaller sections.</li>
             <li>Practise coding regularly.</li>
-            <li>Take short breaks during long study sessions.</li>
-            <li>Revise what you learn and practise with questions.</li>
-            <li>Build small projects to apply your knowledge.</li>
+            <li>Take short breaks while studying.</li>
+            <li>Revise what you learn.</li>
+            <li>Build small projects to practise your skills.</li>
         </ul>
     </div>
 
     <!-- ASSISTANT -->
     <div class="tool-panel" id="assistantPanel">
         <h3>🤖 Learning Assistant</h3>
-        <p>This is a basic topic organiser, not a live AI chatbot.</p>
-        <input id="assistantTopic" placeholder="Enter a topic, e.g. Python loops">
+        <p>This is a basic study guide helper, not a live AI chatbot.</p>
+        <input id="assistantTopic" placeholder="Enter a topic">
         <button class="btn" onclick="explainTopic()">Get Study Guide</button>
         <div class="tool-result" id="assistantResult"></div>
     </div>
@@ -680,49 +665,49 @@ footer strong {
 <section id="career">
     <div class="section-heading">
         <h2>Career Guidance</h2>
-        <p>Explore technology careers and the skills needed to get started.</p>
+        <p>Discover your future in technology.</p>
     </div>
 
     <div class="grid">
         <div class="card">
             <div class="card-icon">🤖</div>
             <h3>AI Engineer</h3>
-            <p>Build intelligent applications and AI systems.</p>
+            <p>Build intelligent applications.</p>
             <button class="btn" onclick="careerInfo('ai')">Explore Roadmap</button>
         </div>
 
         <div class="card">
             <div class="card-icon">📊</div>
             <h3>Data Scientist</h3>
-            <p>Understand data and discover useful patterns.</p>
+            <p>Analyse data and find insights.</p>
             <button class="btn" onclick="careerInfo('data')">Explore Roadmap</button>
         </div>
 
         <div class="card">
             <div class="card-icon">💻</div>
             <h3>Software Developer</h3>
-            <p>Design and develop software applications.</p>
+            <p>Develop software applications.</p>
             <button class="btn" onclick="careerInfo('software')">Explore Roadmap</button>
         </div>
 
         <div class="card">
             <div class="card-icon">🌐</div>
             <h3>Full Stack Developer</h3>
-            <p>Build both frontend and backend applications.</p>
+            <p>Build frontend and backend websites.</p>
             <button class="btn" onclick="careerInfo('fullstack')">Explore Roadmap</button>
         </div>
 
         <div class="card">
             <div class="card-icon">🔐</div>
             <h3>Cybersecurity Analyst</h3>
-            <p>Help protect systems, networks and information.</p>
+            <p>Learn about digital security.</p>
             <button class="btn" onclick="careerInfo('cyber')">Explore Roadmap</button>
         </div>
 
         <div class="card">
             <div class="card-icon">📱</div>
             <h3>App Developer</h3>
-            <p>Create applications for mobile devices.</p>
+            <p>Create mobile applications.</p>
             <button class="btn" onclick="careerInfo('app')">Explore Roadmap</button>
         </div>
     </div>
@@ -734,40 +719,36 @@ footer strong {
 <section id="courses">
     <div class="section-heading">
         <h2>Explore Courses</h2>
-        <p>Choose a learning area and start building your skills.</p>
+        <p>Choose a learning area and build your skills.</p>
     </div>
 
     <div class="grid">
-        <div class="card course-card">
+        <div class="card">
             <div class="card-icon">🐍</div>
             <h3>Python Programming</h3>
-            <p>Learn programming fundamentals and problem-solving.</p>
-            <p class="price">Beginner Level</p>
-            <button class="btn" onclick="chooseCourse('Python Programming')">Select Course</button>
+            <p>Learn coding fundamentals.</p>
+            <a href="enrollment.html" class="btn">Enroll Now</a>
         </div>
 
-        <div class="card course-card">
+        <div class="card">
             <div class="card-icon">🧠</div>
             <h3>Artificial Intelligence</h3>
-            <p>Explore AI concepts and their applications.</p>
-            <p class="price">Beginner Level</p>
-            <button class="btn" onclick="chooseCourse('Artificial Intelligence')">Select Course</button>
+            <p>Explore AI concepts and applications.</p>
+            <a href="enrollment.html" class="btn">Enroll Now</a>
         </div>
 
-        <div class="card course-card">
+        <div class="card">
             <div class="card-icon">📈</div>
             <h3>Data Science</h3>
-            <p>Start learning data analysis and visualisation.</p>
-            <p class="price">Beginner Level</p>
-            <button class="btn" onclick="chooseCourse('Data Science')">Select Course</button>
+            <p>Start learning data analysis.</p>
+            <a href="enrollment.html" class="btn">Enroll Now</a>
         </div>
 
-        <div class="card course-card">
+        <div class="card">
             <div class="card-icon">🌐</div>
             <h3>Web Development</h3>
             <p>Learn HTML, CSS and JavaScript.</p>
-            <p class="price">Beginner Level</p>
-            <button class="btn" onclick="chooseCourse('Web Development')">Select Course</button>
+            <a href="enrollment.html" class="btn">Enroll Now</a>
         </div>
     </div>
 </section>
@@ -776,110 +757,28 @@ footer strong {
 <section id="progress">
     <div class="section-heading">
         <h2>My Progress</h2>
-        <p>Keep track of your learning journey.</p>
+        <p>Keep moving towards your learning goals.</p>
     </div>
 
     <div class="card">
         <h3>Learning Progress</h3>
-        <p>Sample progress display. This is not yet linked to course completion.</p>
+        <p>This is a sample progress display, not connected to course completion.</p>
         <div class="progress-track">
             <div class="progress-fill"></div>
         </div>
-        <strong>35% — Sample progress</strong>
+        <strong>35% — Sample Progress</strong>
     </div>
 
     <div class="card" style="margin-top:20px">
         <h3>🏆 Leaderboard</h3>
-        <p>The leaderboard is a sample display and does not show real user rankings.</p>
+        <p>Sample leaderboard display.</p>
         <div class="task-item"><span>🥇 Learner 1</span><strong>950 points</strong></div>
         <div class="task-item"><span>🥈 Learner 2</span><strong>850 points</strong></div>
         <div class="task-item"><span>🥉 Learner 3</span><strong>750 points</strong></div>
     </div>
 </section>
 
-<!-- LOGIN / SIGNUP -->
-<section id="auth">
-    <div class="section-heading">
-        <h2>Welcome to AI Nexus</h2>
-        <p>Sign in or create an account to get started.</p>
-    </div>
-
-    <div class="auth-area card">
-        <div class="auth-tabs">
-            <button class="btn" id="loginTab" onclick="showAuth('login')">Login</button>
-            <button class="btn btn-outline" id="signupTab" onclick="showAuth('signup')">Sign Up</button>
-        </div>
-
-        <form id="loginForm">
-            <h3>Login to Your Account</h3>
-            <label>Email</label>
-            <input type="email" id="loginEmail" required placeholder="Enter your email">
-            <label>Password</label>
-            <input type="password" id="loginPassword" required placeholder="Enter your password">
-            <button class="btn" type="submit">Login</button>
-            <button class="small-btn" type="button" onclick="resetPassword()">Forgot Password?</button>
-        </form>
-
-        <form id="signupForm" class="hidden">
-            <h3>Create Your Account</h3>
-            <label>Full Name</label>
-            <input type="text" id="signupName" required placeholder="Enter your full name">
-            <label>Email</label>
-            <input type="email" id="signupEmail" required placeholder="Enter your email">
-            <label>Password</label>
-            <input type="password" id="signupPassword" required minlength="6" placeholder="At least 6 characters">
-            <button class="btn" type="submit">Create Account</button>
-        </form>
-
-        <p id="authMessage" class="form-message"></p>
-    </div>
-</section>
-
-<!-- ENROLLMENT -->
-<section id="enrollment">
-    <div class="section-heading">
-        <h2>Student Enrollment</h2>
-        <p>Complete the form to register your interest in AI Nexus courses.</p>
-    </div>
-
-    <div class="auth-area card">
-        <form id="enrollmentForm">
-            <label>Full Name</label>
-            <input id="enrollName" required placeholder="Your full name">
-
-            <label>Email Address</label>
-            <input id="enrollEmail" type="email" required placeholder="Your email">
-
-            <label>Phone Number</label>
-            <input id="enrollPhone" type="tel" required placeholder="Your phone number">
-
-            <label>College / University</label>
-            <input id="enrollCollege" required placeholder="Your college name">
-
-            <label>Select Course</label>
-            <select id="enrollCourse" required>
-                <option value="">Choose a course</option>
-                <option>BTech CSE</option>
-                <option>BTech CSE AI/ML</option>
-                <option>BCA</option>
-                <option>MCA</option>
-                <option>Python Programming</option>
-                <option>Artificial Intelligence</option>
-                <option>Data Science</option>
-                <option>Web Development</option>
-                <option>Other</option>
-            </select>
-
-            <label>Create Password</label>
-            <input id="enrollPassword" type="password" minlength="6" required placeholder="At least 6 characters">
-
-            <button class="btn" type="submit">Submit Enrollment</button>
-        </form>
-
-        <p id="enrollMessage" class="form-message"></p>
-    </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
     <h2><strong>✦ AI Nexus</strong></h2>
     <p>From Confusion to Confidence.</p>
@@ -897,15 +796,14 @@ function closeMenu() {
     document.getElementById("navLinks").classList.remove("show");
 }
 
-/* DARK / LIGHT MODE */
+/* THEME */
 function toggleTheme() {
     document.body.classList.toggle("dark");
 
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("aiNexusTheme", isDark ? "dark" : "light");
+    const dark = document.body.classList.contains("dark");
 
-    document.querySelector(".theme-btn").textContent =
-        isDark ? "☀️" : "🌙";
+    localStorage.setItem("aiNexusTheme", dark ? "dark" : "light");
+    document.querySelector(".theme-btn").textContent = dark ? "☀️" : "🌙";
 }
 
 if (localStorage.getItem("aiNexusTheme") === "dark") {
@@ -913,14 +811,17 @@ if (localStorage.getItem("aiNexusTheme") === "dark") {
     document.querySelector(".theme-btn").textContent = "☀️";
 }
 
-/* LEARNING TOOLS */
+/* OPEN LEARNING TOOLS */
 function openTool(id) {
     document.querySelectorAll(".tool-panel").forEach(panel => {
         panel.classList.remove("active");
     });
 
     document.getElementById(id).classList.add("active");
-    document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 
     if (id === "notesPanel") renderNotes();
     if (id === "plannerPanel") renderTasks();
@@ -936,12 +837,13 @@ function saveNote() {
     const content = document.getElementById("noteContent").value.trim();
 
     if (!title || !content) {
-        alert("Please enter both a title and note.");
+        alert("Enter a title and note.");
         return;
     }
 
     const notes = getNotes();
     notes.push({title, content, id: Date.now()});
+
     localStorage.setItem("aiNexusNotes", JSON.stringify(notes));
 
     document.getElementById("noteTitle").value = "";
@@ -952,29 +854,22 @@ function saveNote() {
 
 function renderNotes() {
     const container = document.getElementById("notesList");
-    const notes = getNotes();
-
     container.innerHTML = "<h3>Your Saved Notes</h3>";
 
-    if (!notes.length) {
-        container.innerHTML += "<p>No notes saved yet.</p>";
-        return;
-    }
-
-    notes.forEach(note => {
-        const item = document.createElement("div");
-        item.className = "note-item";
+    getNotes().forEach(note => {
+        const row = document.createElement("div");
+        row.className = "note-item";
 
         const text = document.createElement("span");
         text.textContent = note.title + ": " + note.content;
 
-        const remove = document.createElement("button");
-        remove.className = "small-btn";
-        remove.textContent = "Delete";
-        remove.onclick = () => deleteNote(note.id);
+        const button = document.createElement("button");
+        button.className = "small-btn";
+        button.textContent = "Delete";
+        button.onclick = () => deleteNote(note.id);
 
-        item.append(text, remove);
-        container.appendChild(item);
+        row.append(text, button);
+        container.appendChild(row);
     });
 }
 
@@ -984,28 +879,23 @@ function deleteNote(id) {
     renderNotes();
 }
 
-/* TXT DOCUMENT EXTRACTOR */
+/* TXT EXTRACTOR */
 function extractText() {
     const file = document.getElementById("textFile").files[0];
     const output = document.getElementById("extractedText");
 
     if (!file) {
-        output.textContent = "Please select a TXT file first.";
-        return;
-    }
-
-    if (!file.name.toLowerCase().endsWith(".txt")) {
-        output.textContent = "Please select a .txt file.";
+        output.textContent = "Please select a TXT file.";
         return;
     }
 
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = event => {
         output.textContent = event.target.result;
     };
 
-    reader.onerror = function() {
+    reader.onerror = () => {
         output.textContent = "Unable to read this file.";
     };
 
@@ -1016,7 +906,7 @@ function extractText() {
 const quizQuestions = {
     python: [
         {
-            q: "Which keyword is used to define a function in Python?",
+            q: "Which keyword defines a function in Python?",
             options: ["func", "def", "function", "define"],
             answer: 1
         },
@@ -1043,24 +933,24 @@ const quizQuestions = {
             answer: 0
         },
         {
-            q: "Which is an example of an AI application?",
-            options: ["Voice assistant", "Paper notebook", "Plain ruler", "Pencil"],
+            q: "Which is an AI application?",
+            options: ["Voice assistant", "Paper notebook", "Ruler", "Pencil"],
             answer: 0
         }
     ],
     web: [
         {
-            q: "Which language creates the structure of a webpage?",
+            q: "Which language creates webpage structure?",
             options: ["HTML", "Python", "SQL", "C"],
             answer: 0
         },
         {
-            q: "Which language is used to style webpages?",
+            q: "Which language styles webpages?",
             options: ["Java", "CSS", "C++", "PHP"],
             answer: 1
         },
         {
-            q: "Which language adds interactivity to webpages?",
+            q: "Which language adds webpage interactivity?",
             options: ["JavaScript", "HTML only", "CSS only", "XML"],
             answer: 0
         }
@@ -1072,16 +962,16 @@ function startQuiz() {
     const questions = quizQuestions[topic];
     const area = document.getElementById("quizArea");
 
-    area.innerHTML = "<h3>Answer the questions</h3>";
+    area.innerHTML = "<h3>Answer the Questions</h3>";
 
     questions.forEach((question, index) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "card";
-        wrapper.style.marginTop = "12px";
+        const box = document.createElement("div");
+        box.className = "card";
+        box.style.marginTop = "12px";
 
         const heading = document.createElement("h4");
         heading.textContent = (index + 1) + ". " + question.q;
-        wrapper.appendChild(heading);
+        box.appendChild(heading);
 
         question.options.forEach((option, optionIndex) => {
             const label = document.createElement("label");
@@ -1092,13 +982,12 @@ function startQuiz() {
             radio.name = "question" + index;
             radio.value = optionIndex;
             radio.style.width = "auto";
-            radio.style.marginRight = "8px";
 
             label.append(radio, document.createTextNode(option));
-            wrapper.appendChild(label);
+            box.appendChild(label);
         });
 
-        area.appendChild(wrapper);
+        area.appendChild(box);
     });
 
     const submit = document.createElement("button");
@@ -1123,9 +1012,16 @@ function checkQuiz(questions) {
         }
     });
 
-    document.getElementById("quizArea").innerHTML +=
-        "<div class='tool-result'>Your score: " +
-        score + " out of " + questions.length + "</div>";
+    let result = document.getElementById("quizResult");
+
+    if (!result) {
+        result = document.createElement("div");
+        result.id = "quizResult";
+        result.className = "tool-result";
+        document.getElementById("quizArea").appendChild(result);
+    }
+
+    result.textContent = "Your score: " + score + " out of " + questions.length;
 }
 
 /* STUDY PLANNER */
@@ -1146,29 +1042,23 @@ function addTask() {
     tasks.push({task, date, done: false, id: Date.now()});
 
     localStorage.setItem("aiNexusTasks", JSON.stringify(tasks));
-    document.getElementById("taskInput").value = "";
 
+    document.getElementById("taskInput").value = "";
     renderTasks();
 }
 
 function renderTasks() {
     const container = document.getElementById("taskList");
-    const tasks = getTasks();
-
     container.innerHTML = "<h3>Your Tasks</h3>";
 
-    if (!tasks.length) {
-        container.innerHTML += "<p>No tasks added yet.</p>";
-        return;
-    }
-
-    tasks.forEach(item => {
+    getTasks().forEach(item => {
         const row = document.createElement("div");
         row.className = "task-item";
 
-        const label = document.createElement("span");
-        label.textContent = (item.done ? "✓ " : "") +
-            item.task + (item.date ? " — " + item.date : "");
+        const text = document.createElement("span");
+        text.textContent =
+            (item.done ? "✓ " : "") + item.task +
+            (item.date ? " — " + item.date : "");
 
         const done = document.createElement("button");
         done.className = "small-btn";
@@ -1180,7 +1070,7 @@ function renderTasks() {
         remove.textContent = "Delete";
         remove.onclick = () => deleteTask(item.id);
 
-        row.append(label, done, remove);
+        row.append(text, done, remove);
         container.appendChild(row);
     });
 }
@@ -1201,7 +1091,7 @@ function deleteTask(id) {
     renderTasks();
 }
 
-/* BASIC LEARNING TOPIC HELPER */
+/* BASIC LEARNING ASSISTANT */
 function explainTopic() {
     const topic = document.getElementById("assistantTopic").value.trim();
     const result = document.getElementById("assistantResult");
@@ -1212,64 +1102,58 @@ function explainTopic() {
     }
 
     result.textContent =
-        "Your study guide for: " + topic +
-        "\n\n1. Read the basic definition.\n" +
-        "2. Understand the main concepts.\n" +
-        "3. Study simple examples.\n" +
-        "4. Practise questions.\n" +
-        "5. Create short revision notes.\n\n" +
-        "Note: This is a basic guide template, not a live AI-generated explanation.";
+        "Study Guide: " + topic +
+        "\n\n1. Understand the basic definition." +
+        "\n2. Learn the main concepts." +
+        "\n3. Study simple examples." +
+        "\n4. Practise questions." +
+        "\n5. Create revision notes." +
+        "\n\nThis is a basic study template, not a live AI response.";
 }
 
 /* CAREER ROADMAPS */
 const careers = {
     ai: {
         name: "AI Engineer",
-        description: "AI Engineers build applications that use artificial intelligence.",
+        description: "Build intelligent applications using AI.",
         skills: ["Python", "Mathematics", "Machine Learning", "Deep Learning", "Data Handling"],
-        roadmap: ["Learn Python basics", "Study mathematics and statistics", "Understand machine learning", "Practise with small projects", "Explore deep learning"],
-        projects: ["Basic chatbot", "Image classification demo", "Student marks prediction"],
-        certificates: ["Python fundamentals", "Machine learning fundamentals"]
+        roadmap: ["Learn Python basics", "Study mathematics", "Understand machine learning", "Practise projects", "Explore deep learning"],
+        projects: ["Basic chatbot", "Image classification demo", "Student marks prediction"]
     },
     data: {
         name: "Data Scientist",
-        description: "Data Scientists analyse information and use it to find useful insights.",
+        description: "Analyse data and discover useful insights.",
         skills: ["Python", "Statistics", "SQL", "Data Visualisation", "Machine Learning"],
-        roadmap: ["Learn Python", "Study statistics", "Learn SQL", "Practise data analysis", "Build data projects"],
-        projects: ["Student performance analysis", "Sales data dashboard", "Data visualisation project"],
-        certificates: ["Data analysis fundamentals", "Python for data science"]
+        roadmap: ["Learn Python", "Study statistics", "Learn SQL", "Practise data analysis", "Build projects"],
+        projects: ["Student performance analysis", "Sales dashboard", "Data visualisation"]
     },
     software: {
         name: "Software Developer",
-        description: "Software Developers create and maintain software applications.",
+        description: "Create and maintain software applications.",
         skills: ["Programming", "Problem Solving", "Data Structures", "Git", "Testing"],
-        roadmap: ["Choose a programming language", "Learn programming fundamentals", "Study data structures", "Build projects", "Learn software testing"],
-        projects: ["Calculator", "To-do application", "Student management system"],
-        certificates: ["Programming fundamentals", "Software development basics"]
+        roadmap: ["Learn a programming language", "Study programming basics", "Learn data structures", "Build projects", "Learn testing"],
+        projects: ["Calculator", "To-do application", "Student management system"]
     },
     fullstack: {
         name: "Full Stack Developer",
-        description: "Full Stack Developers work on both the frontend and backend of websites.",
-        skills: ["HTML", "CSS", "JavaScript", "Backend Development", "Databases"],
-        roadmap: ["Learn HTML and CSS", "Learn JavaScript", "Build responsive pages", "Learn backend basics", "Connect a database"],
-        projects: ["Portfolio website", "Student registration website", "Task management app"],
-        certificates: ["Web development fundamentals", "JavaScript fundamentals"]
+        description: "Build both frontend and backend websites.",
+        skills: ["HTML", "CSS", "JavaScript", "Backend", "Databases"],
+        roadmap: ["Learn HTML and CSS", "Learn JavaScript", "Build responsive pages", "Learn backend", "Connect a database"],
+        projects: ["Portfolio website", "Registration website", "Task management app"]
     },
     cyber: {
         name: "Cybersecurity Analyst",
-        description: "Cybersecurity Analysts help organisations protect digital systems and data.",
-        skills: ["Networking", "Operating Systems", "Security Basics", "Risk Awareness", "Problem Solving"],
-        roadmap: ["Understand computer networks", "Learn operating system basics", "Study security principles", "Practise in legal learning labs", "Explore security monitoring"],
-        projects: ["Network security awareness guide", "Password safety checker demo", "Security awareness presentation"],
-        certificates: ["Cybersecurity fundamentals", "Networking fundamentals"]
+        description: "Help protect digital systems and information.",
+        skills: ["Networking", "Operating Systems", "Security Basics", "Risk Awareness"],
+        roadmap: ["Understand networking", "Learn operating systems", "Study security principles", "Use legal learning labs", "Explore security monitoring"],
+        projects: ["Security awareness guide", "Password safety demo", "Security presentation"]
     },
     app: {
         name: "App Developer",
-        description: "App Developers create applications for mobile devices.",
+        description: "Create applications for mobile devices.",
         skills: ["Programming", "UI Design", "App Frameworks", "APIs", "Testing"],
-        roadmap: ["Learn programming basics", "Understand app design", "Choose an app development framework", "Build simple apps", "Test and improve your projects"],
-        projects: ["Notes app", "Study timer app", "Student timetable app"],
-        certificates: ["Mobile app development fundamentals", "Programming fundamentals"]
+        roadmap: ["Learn programming", "Understand app design", "Choose a framework", "Build simple apps", "Test your projects"],
+        projects: ["Notes app", "Study timer app", "Student timetable app"]
     }
 };
 
@@ -1279,206 +1163,37 @@ function careerInfo(key) {
 
     detail.innerHTML = "";
 
-    const title = document.createElement("h3");
-    title.textContent = career.name + " — Career Roadmap";
-    detail.appendChild(title);
+    const heading = document.createElement("h3");
+    heading.textContent = career.name + " — Career Roadmap";
+    detail.appendChild(heading);
 
     const description = document.createElement("p");
     description.textContent = career.description;
     detail.appendChild(description);
 
-    function addList(titleText, items) {
-        const heading = document.createElement("h4");
-        heading.textContent = titleText;
-        detail.appendChild(heading);
+    function addList(title, items) {
+        const h4 = document.createElement("h4");
+        h4.textContent = title;
+        detail.appendChild(h4);
 
-        const list = document.createElement("ul");
+        const ul = document.createElement("ul");
 
         items.forEach(item => {
             const li = document.createElement("li");
             li.textContent = item;
-            list.appendChild(li);
+            ul.appendChild(li);
         });
 
-        detail.appendChild(list);
+        detail.appendChild(ul);
     }
 
     addList("Skills to Learn", career.skills);
     addList("Step-by-Step Roadmap", career.roadmap);
     addList("Beginner Project Ideas", career.projects);
-    addList("Suggested Learning Topics", career.certificates);
 
     detail.classList.add("active");
     detail.scrollIntoView({behavior:"smooth", block:"start"});
 }
-
-/* COURSE SELECTION */
-function chooseCourse(course) {
-    document.getElementById("enrollCourse").value = course;
-    document.getElementById("enrollment").scrollIntoView({behavior:"smooth"});
-}
-
-/* LOGIN / SIGNUP DISPLAY */
-function showAuth(mode) {
-    const login = mode === "login";
-
-    document.getElementById("loginForm").classList.toggle("hidden", !login);
-    document.getElementById("signupForm").classList.toggle("hidden", login);
-
-    document.getElementById("loginTab").className =
-        login ? "btn" : "btn btn-outline";
-
-    document.getElementById("signupTab").className =
-        login ? "btn btn-outline" : "btn";
-
-    document.getElementById("authMessage").textContent = "";
-}
-</script>
-
-<!-- FIREBASE AUTHENTICATION AND ENROLLMENT -->
-<script type="module">
-import { initializeApp } from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    updateProfile
-} from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    serverTimestamp
-} from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-/*
-  IMPORTANT:
-  Replace these placeholder values with your Firebase Web App config.
-  Firebase Console → Project settings → Your apps → Web app.
-*/
-const firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY",
-    authDomain: "ai-nexus-c9e0c.firebaseapp.com",
-    projectId: "ai-nexus-c9e0c",
-    storageBucket: "ai-nexus-c9e0c.firebasestorage.app",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_FIREBASE_APP_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-const authMessage = document.getElementById("authMessage");
-const enrollMessage = document.getElementById("enrollMessage");
-
-/* SIGN UP */
-document.getElementById("signupForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById("signupName").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value;
-
-    authMessage.textContent = "Creating your account...";
-
-    try {
-        const result = await createUserWithEmailAndPassword(auth, email, password);
-
-        await updateProfile(result.user, {
-            displayName: name
-        });
-
-        authMessage.textContent = "Account created successfully!";
-        document.getElementById("signupForm").reset();
-
-    } catch (error) {
-        authMessage.textContent = error.message;
-    }
-});
-
-/* LOGIN */
-document.getElementById("loginForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    authMessage.textContent = "Signing in...";
-
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-
-        authMessage.textContent = "Login successful! Welcome to AI Nexus.";
-
-        document.getElementById("loginForm").reset();
-
-    } catch (error) {
-        authMessage.textContent = error.message;
-    }
-});
-
-/* PASSWORD RESET */
-window.resetPassword = async function() {
-    const email = document.getElementById("loginEmail").value.trim();
-
-    if (!email) {
-        authMessage.textContent = "Enter your email address first.";
-        return;
-    }
-
-    try {
-        await sendPasswordResetEmail(auth, email);
-        authMessage.textContent = "Password reset email sent. Check your inbox.";
-    } catch (error) {
-        authMessage.textContent = error.message;
-    }
-};
-
-/* ENROLLMENT */
-document.getElementById("enrollmentForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById("enrollName").value.trim();
-    const email = document.getElementById("enrollEmail").value.trim();
-    const phone = document.getElementById("enrollPhone").value.trim();
-    const college = document.getElementById("enrollCollege").value.trim();
-    const course = document.getElementById("enrollCourse").value;
-    const password = document.getElementById("enrollPassword").value;
-
-    enrollMessage.textContent = "Submitting your enrollment...";
-
-    try {
-        const result = await createUserWithEmailAndPassword(auth, email, password);
-
-        await updateProfile(result.user, {
-            displayName: name
-        });
-
-        await setDoc(doc(db, "enrollments", result.user.uid), {
-            name: name,
-            email: email,
-            phone: phone,
-            college: college,
-            course: course,
-            createdAt: serverTimestamp()
-        });
-
-        enrollMessage.textContent =
-            "Enrollment submitted successfully! Your account has been created.";
-
-        document.getElementById("enrollmentForm").reset();
-
-    } catch (error) {
-        enrollMessage.textContent = error.message;
-    }
-});
 </script>
 
 </body>
