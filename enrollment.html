@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nexus | Student Enrollment</title>
+
+<style>
+:root {
+    --primary: #c65b83;
+    --primary-light: #f5dce6;
+    --bg: #fffafd;
+    --text: #382632;
+    --white: #ffffff;
+    --border: #efd5e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 7%;
+    background: white;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--primary);
+    font-size: 27px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.home-btn {
+    text-decoration: none;
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.home-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.container {
+    width: 92%;
+    max-width: 650px;
+    margin: 45px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(198,91,131,0.12);
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.heading h1 {
+    color: var(--primary);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.heading p {
+    color: #806b77;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    outline: none;
+    font-size: 15px;
+    background: #fffafd;
+    color: var(--text);
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(198,91,131,0.12);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.submit-btn:hover {
+    background: #a9476e;
+}
+
+.submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+#message {
+    text-align: center;
+    margin-top: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #927d89;
+    font-size: 14px;
+}
+
+@media(max-width: 600px) {
+    header {
+        padding: 12px 4%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .logo img {
+        width: 43px;
+        height: 43px;
+    }
+
+    .container {
+        padding: 23px;
+        margin: 28px auto;
+    }
+
+    .heading h1 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        <img src="logo.png" alt="AI Nexus Logo"
+             onerror="this.style.display='none'">
+        <span>AI Nexus</span>
+    </a>
+
+    <a href="index.html" class="home-btn">⌂ Home</a>
+</header>
+
+<main class="container">
+
+    <div class="heading">
+        <h1>Student Enrollment</h1>
+        <p>Start your learning journey with AI Nexus.</p>
+    </div>
+
+    <form id="enrollmentForm">
+
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+                maxlength="80"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                maxlength="120"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="education">Education Level</label>
+            <select id="education" required>
+                <option value="">Select your education level</option>
+                <option>School Student</option>
+                <option>Undergraduate Student</option>
+                <option>Postgraduate Student</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Choose Your Course</label>
+            <select id="course" required>
+                <option value="">Select a course</option>
+                <option>Artificial Intelligence</option>
+                <option>Machine Learning</option>
+                <option>Data Science</option>
+                <option>Web Development</option>
+                <option>Full Stack Development</option>
+                <option>Cybersecurity</option>
+                <option>Python Programming</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+            Submit Enrollment
+        </button>
+
+        <p id="message" role="status"></p>
+
+    </form>
+</main>
+
+<footer>
+    © 2026 AI Nexus | From Confusion to Confidence
+</footer>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+/* REPLACE THIS WITH YOUR FIREBASE PROJECT CONFIG */
+
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+/* FIREBASE CONNECTION */
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ENROLLMENT FORM */
+
+const form = document.getElementById("enrollmentForm");
+const message = document.getElementById("message");
+const submitBtn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const education = document.getElementById("education").value;
+    const course = document.getElementById("course").value;
+
+    if (!fullName || !email || !education || !course) {
+        message.style.color = "red";
+        message.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+    message.textContent = "";
+
+    try {
+
+        await addDoc(collection(db, "enrollments"), {
+            fullName: fullName,
+            email: email,
+            education: education,
+            course: course,
+            submittedAt: serverTimestamp()
+        });
+
+        message.style.color = "green";
+        message.textContent =
+            "Enrollment submitted successfully! Welcome to AI Nexus.";
+
+        form.reset();
+
+    } catch (error) {
+
+        console.error("Enrollment error:", error);
+
+        message.style.color = "red";
+        message.textContent =
+            "Unable to submit enrollment. Please check your Firebase setup.";
+
+    } finally {
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Enrollment";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
