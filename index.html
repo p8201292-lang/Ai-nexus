@@ -50,10 +50,15 @@ header {
   gap: 15px;
 }
 .logo {
-  font-size: 27px;
-  font-weight: bold;
-  color: var(--primary);
-  white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 170px;
+    height: 75px;
+    object-fit: contain;
+    display: block;
 }
 nav {
   display: flex;
@@ -181,7 +186,9 @@ footer {
 <body>
 
 <header>
-  <div class="logo">✦ AI Nexus</div>
+<div class="logo">
+    <img src="ai-nexus-logo.png" alt="AI Nexus Logo">
+</div>
 
   <nav>
     <a href="#home" onclick="showPage('home')">Home</a>
