@@ -1112,12 +1112,13 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 // STEP 1: ADD YOUR FIREBASE CONFIGURATION
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBzULMYP5kR0vCmpvxxb0HGF-FtwEdJBIY",
+  authDomain: "ai-nexus-c9e0c.firebaseapp.com",
+  projectId: "ai-nexus-c9e0c",
+  storageBucket: "ai-nexus-c9e0c.firebasestorage.app",
+  messagingSenderId: "165230627110",
+  appId: "1:165230627110:web:a1bb03fc182abe865bd9e7",
+  measurementId: "G-W0MZ0XRCB0"
 };
 
 
@@ -1128,10 +1129,6 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 
-// GOOGLE SHEETS APPS SCRIPT URL
-
-const GOOGLE_SCRIPT_URL =
-"YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 
 
 // STATUS MESSAGE
@@ -1248,11 +1245,7 @@ document.getElementById("enrollForm")
   const button = e.target.querySelector("button[type=submit]");
 
   try {
-    if(GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-      throw new Error(
-        "Google Sheets URL is not configured yet. Add your Apps Script URL."
-      );
-    }
+
 
     button.disabled = true;
     button.textContent = "Submitting...";
@@ -1265,23 +1258,7 @@ document.getElementById("enrollForm")
 
     await updateProfile(result.user,{displayName:name});
 
-    // SAVE ENROLLMENT TO GOOGLE SHEETS
-
-    await fetch(GOOGLE_SCRIPT_URL,{
-      method:"POST",
-      mode:"no-cors",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        name:name,
-        email:email,
-        phone:phone,
-        college:college,
-        course:course,
-        uid:result.user.uid
-      })
-    });
+    
 
     setStatus("enrollStatus",
       "Account created! Enrollment request submitted. Welcome to AI Nexus!",
