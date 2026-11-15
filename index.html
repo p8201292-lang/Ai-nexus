@@ -8,195 +8,172 @@
 
 <style>
 :root {
-  --bg:#fff8fa;
-  --surface:#ffffff;
-  --text:#382a32;
-  --muted:#897580;
-  --pink:#ce819c;
-  --pink-dark:#ae617e;
-  --soft:#f8e7ed;
-  --border:#f0dce4;
-  --shadow:0 8px 28px rgba(120,70,90,.08);
+  --primary: #c65b83;
+  --primary-light: #f5dce6;
+  --bg: #fffafd;
+  --card: #ffffff;
+  --text: #302b32;
+  --muted: #77717a;
+  --border: #eadfe5;
+  --hero: #f9eaf0;
 }
 body.dark {
-  --bg:#17151a;
-  --surface:#242027;
-  --text:#fff1f6;
-  --muted:#bbaab4;
-  --pink:#e39bb5;
-  --pink-dark:#d17e9d;
-  --soft:#392b35;
-  --border:#493943;
-  --shadow:0 8px 28px rgba(0,0,0,.2);
+  --primary: #ec83aa;
+  --primary-light: #49303d;
+  --bg: #17151b;
+  --card: #24212a;
+  --text: #f8edf3;
+  --muted: #c1b5c0;
+  --border: #403743;
+  --hero: #30232e;
 }
-* {box-sizing:border-box;margin:0;padding:0}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:.3s;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: .3s;
 }
-button,input {font:inherit}
-button {cursor:pointer}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
 header {
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  padding:16px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  position:sticky;
-  top:0;
-  z-index:10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 17px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
-.logo {font-size:25px;font-weight:800;color:var(--pink-dark)}
-nav {display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-nav a,nav button {
-  color:var(--text);
-  background:transparent;
-  border:0;
-  text-decoration:none;
-  padding:10px;
-  border-radius:8px;
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--primary);
+  white-space: nowrap;
 }
-nav a:hover,nav button:hover {background:var(--soft)}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+}
+nav a:hover { color: var(--primary); }
 .btn {
-  border:0;
-  background:var(--pink);
-  color:white;
-  padding:12px 20px;
-  border-radius:9px;
-  font-weight:bold;
-  text-decoration:none;
-  display:inline-block;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 21px;
+  font-weight: bold;
 }
-.btn:hover {background:var(--pink-dark)}
-.btn-outline {
-  background:var(--soft);
-  color:var(--text);
+.btn:hover { opacity: .85; }
+.theme {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: 21px;
 }
-.container {width:min(1150px,92%);margin:auto}
+main { padding: 30px 5%; }
 .hero {
-  margin-top:30px;
-  padding:65px 35px;
-  border-radius:22px;
-  background:linear-gradient(120deg,#f5d9e3,#fff0f4);
-  color:#543545;
-  text-align:center;
-  box-shadow:var(--shadow);
+  background: var(--hero);
+  border-radius: 25px;
+  padding: 75px 20px;
+  text-align: center;
+  margin-bottom: 55px;
 }
-body.dark .hero {
-  background:linear-gradient(120deg,#4b303e,#30232d);
-  color:#fff1f6;
-}
-.hero h1 {font-size:clamp(32px,5vw,53px);margin-bottom:15px}
-.hero p {line-height:1.8;font-size:17px}
-.hero .btn {margin:20px 5px 0}
-.section {margin:48px 0}
-.section-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:20px;
-  flex-wrap:wrap;
-}
-.section-heading h2 {font-size:25px}
+.hero h1 { font-size: 46px; margin-bottom: 18px; }
+.hero h2 { font-size: 25px; margin-bottom: 8px; }
+.hero p { color: var(--muted); line-height: 1.8; }
+.hero-actions { margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.section { margin-bottom: 55px; scroll-margin-top: 90px; }
+.section h2 { font-size: 27px; margin-bottom: 22px; }
 .grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
 }
 .card {
-  background:var(--surface);
-  padding:23px;
-  border:1px solid var(--border);
-  border-radius:16px;
-  box-shadow:var(--shadow);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 25px;
+  transition: .25s;
 }
-.card h3 {margin:12px 0 9px}
-.card p {color:var(--muted);line-height:1.6}
-.icon {font-size:31px}
-.card a {
-  display:inline-block;
-  margin-top:15px;
-  color:var(--pink-dark);
-  text-decoration:none;
-  font-weight:bold;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px #00000012;
 }
-.stat {font-size:28px;color:var(--pink-dark);font-weight:bold;margin-top:12px}
-.progress {
-  height:9px;
-  background:var(--soft);
-  border-radius:20px;
-  margin-top:15px;
-  overflow:hidden;
-}
-.progress span {
-  display:block;
-  height:100%;
-  width:0%;
-  background:var(--pink);
-}
-.search {
-  width:100%;
-  padding:14px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--surface);
-  color:var(--text);
-  margin-bottom:20px;
-}
-.course {display:flex;flex-direction:column}
-.course .btn {margin-top:15px;text-align:center}
-.leader-row {
-  display:flex;
-  justify-content:space-between;
-  padding:14px 5px;
-  border-bottom:1px solid var(--border);
-}
-.chat-box {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:20px;
-}
+.emoji { font-size: 29px; margin-bottom: 15px; }
+.card h3 { margin-bottom: 12px; font-size: 20px; }
+.card p { color: var(--muted); line-height: 1.7; }
+.number { color: var(--primary); font-size: 29px; font-weight: bold; margin-top: 15px; }
+.course-btn { margin-top: 17px; width: 100%; }
+.progress-box { margin-top: 15px; background: var(--primary-light); height: 12px; border-radius: 20px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: var(--primary); transition: .4s; }
+.leaderboard { padding: 20px; }
+.leaderboard div { padding: 15px 5px; border-bottom: 1px solid var(--border); }
+.chat-box { padding: 25px; }
 .chat-messages {
-  min-height:100px;
-  max-height:220px;
-  overflow:auto;
-  margin:15px 0;
+  background: var(--hero);
+  border-radius: 12px;
+  padding: 15px;
+  min-height: 85px;
+  margin: 15px 0;
+  line-height: 1.7;
 }
-.chat-line {
-  background:var(--soft);
-  padding:12px;
-  border-radius:10px;
-  margin:8px 0;
-  line-height:1.5;
-}
-.chat-controls {display:flex;gap:8px}
-.chat-controls input {
-  flex:1;
-  min-width:0;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:var(--bg);
-  color:var(--text);
+.chat-input { display: flex; gap: 10px; }
+.chat-input input { flex: 1; min-width: 0; }
+input, select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 9px;
+  margin: 8px 0;
 }
 footer {
-  text-align:center;
-  padding:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  margin-top:50px;
+  text-align: center;
+  padding: 35px 15px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  line-height: 2;
 }
-@media(max-width:700px) {
-  header {flex-direction:column}
-  nav {justify-content:center}
-  .hero {padding:42px 20px}
-  .chat-controls {flex-direction:column}
+.page { display: none; }
+.page.active { display: block; }
+.auth-wrap {
+  max-width: 480px;
+  margin: 45px auto;
+  background: var(--card);
+  padding: 35px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+.auth-wrap h1 { color: var(--primary); margin-bottom: 12px; }
+.auth-wrap p { color: var(--muted); margin-bottom: 20px; }
+.auth-wrap .btn { width: 100%; margin-top: 12px; }
+.auth-wrap a { color: var(--primary); }
+.message { margin-top: 15px; color: var(--primary); line-height: 1.5; }
+.back-link { display: inline-block; margin-bottom: 20px; color: var(--primary); cursor: pointer; }
+@media(max-width:800px) {
+  header { flex-wrap: wrap; }
+  nav { order: 3; width: 100%; overflow-x: auto; padding: 8px 0; gap: 18px; }
+  nav a { white-space: nowrap; }
+  .hero h1 { font-size: 32px; }
+  .hero { padding: 55px 15px; }
+}
+@media(max-width:480px) {
+  main { padding: 22px 4%; }
+  .auth-wrap { padding: 22px; }
+  .chat-input { flex-direction: column; }
 }
 </style>
 </head>
@@ -205,261 +182,471 @@ footer {
 
 <header>
   <div class="logo">✦ AI Nexus</div>
+
   <nav>
-    <a href="#home">Home</a>
-    <a href="#learning">Learning</a>
-    <a href="#career">Career</a>
-    <a href="#courses">Courses</a>
-    <a href="#progress">Progress</a>
-    <a href="signin.html">Sign In</a>
-    <a href="enrollment.html" class="btn">Enroll Now</a>
-    <button onclick="toggleTheme()" title="Change theme">☾ / ☀</button>
+    <a href="#home" onclick="showPage('home')">Home</a>
+    <a href="#learning" onclick="showPage('home')">Learning</a>
+    <a href="#career" onclick="showPage('home')">Career</a>
+    <a href="#courses" onclick="showPage('home')">Courses</a>
+    <a href="#progress" onclick="showPage('home')">Progress</a>
+    <a href="#signin" onclick="showPage('signin')">Sign In</a>
+    <button class="btn" onclick="showPage('enroll')">Enroll Now</button>
   </nav>
+
+  <button class="theme" onclick="toggleTheme()" title="Change theme">☾ / ☀</button>
 </header>
 
-<main class="container">
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+<main>
 
-<section class="hero" id="home">
+<section class="hero">
   <h1>Welcome to AI Nexus!</h1>
   <h2>From Confusion to Confidence.</h2>
   <p>Your intelligent companion for learning, skills and career growth.</p>
   <p>Learn smarter. Build skills. Discover your future.</p>
-  <a href="#learning" class="btn">Explore Dashboard</a>
-  <a href="enrollment.html" class="btn btn-outline">Join AI Nexus</a>
-</section>
-
-<section class="section" id="dashboard">
-  <div class="section-heading">
-    <h2>📊 AI Learning Dashboard</h2>
-    <span>Welcome, Learner!</span>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">📚</div>
-      <h3>My Courses</h3>
-      <p>Your selected learning courses.</p>
-      <div class="stat">0</div>
-    </div>
-    <div class="card">
-      <div class="icon">🎯</div>
-      <h3>Learning Goals</h3>
-      <p>Set and achieve your learning goals.</p>
-      <div class="stat">0</div>
-    </div>
-    <div class="card">
-      <div class="icon">🏆</div>
-      <h3>Achievements</h3>
-      <p>Celebrate your learning milestones.</p>
-      <div class="stat">0</div>
-    </div>
-    <div class="card">
-      <div class="icon">⚡</div>
-      <h3>Skill Development</h3>
-      <p>Build your technical knowledge.</p>
-      <div class="stat">Start</div>
-    </div>
+  <div class="hero-actions">
+    <button class="btn" onclick="document.getElementById('learning').scrollIntoView()">Explore Dashboard</button>
+    <button class="btn" onclick="showPage('enroll')">Join AI Nexus</button>
   </div>
 </section>
 
 <section class="section" id="learning">
-  <div class="section-heading">
-    <h2>🧠 AI Learning Hub</h2>
+<h2>📊 AI Learning Dashboard</h2>
+<div class="grid">
+  <div class="card">
+    <div class="emoji">📚</div>
+    <h3>My Courses</h3>
+    <p>Your selected learning courses.</p>
+    <div class="number" id="courseCount">0</div>
   </div>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">📖</div>
-      <h3>Smart Learning</h3>
-      <p>Explore concepts through structured learning resources.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📝</div>
-      <h3>Practice Zone</h3>
-      <p>Improve your knowledge with practice activities.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🔍</div>
-      <h3>AI Tools Explorer</h3>
-      <p>Discover useful AI tools for students and developers.</p>
-    </div>
+  <div class="card">
+    <div class="emoji">🎯</div>
+    <h3>Learning Goals</h3>
+    <p>Set and achieve your learning goals.</p>
+    <div class="number" id="goalCount">0</div>
+    <button class="btn course-btn" onclick="addGoal()">Add Goal</button>
   </div>
+  <div class="card">
+    <div class="emoji">🏆</div>
+    <h3>Achievements</h3>
+    <p>Celebrate your learning milestones.</p>
+    <div class="number" id="achievementCount">0</div>
+  </div>
+  <div class="card">
+    <div class="emoji">⚡</div>
+    <h3>Skill Development</h3>
+    <p>Build your technical knowledge.</p>
+    <div class="number">Start</div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<h2>🧠 AI Learning Hub</h2>
+<div class="grid">
+  <div class="card">
+    <div class="emoji">📖</div>
+    <h3>Smart Learning</h3>
+    <p>Explore concepts through structured learning resources.</p>
+  </div>
+  <div class="card">
+    <div class="emoji">📝</div>
+    <h3>Practice Zone</h3>
+    <p>Improve your knowledge with practice activities.</p>
+  </div>
+  <div class="card">
+    <div class="emoji">🔍</div>
+    <h3>AI Tools Explorer</h3>
+    <p>Discover useful AI tools for students and developers.</p>
+  </div>
+</div>
 </section>
 
 <section class="section" id="career">
-  <div class="section-heading">
-    <h2>🚀 AI Career Guidance</h2>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">🤖</div>
-      <h3>AI Engineer</h3>
-      <p>Explore artificial intelligence skills and career paths.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📈</div>
-      <h3>Data Scientist</h3>
-      <p>Explore data analysis, statistics and machine learning.</p>
-    </div>
-    <div class="card">
-      <div class="icon">💻</div>
-      <h3>Software Developer</h3>
-      <p>Build programming and software development skills.</p>
-    </div>
-  </div>
+<h2>🚀 AI Career Guidance</h2>
+<div class="grid">
+  <div class="card"><div class="emoji">🤖</div><h3>AI Engineer</h3><p>Explore artificial intelligence skills and career paths.</p></div>
+  <div class="card"><div class="emoji">📈</div><h3>Data Scientist</h3><p>Explore data analysis, statistics and machine learning.</p></div>
+  <div class="card"><div class="emoji">💻</div><h3>Software Developer</h3><p>Build programming and software development skills.</p></div>
+</div>
 </section>
 
 <section class="section" id="courses">
-  <div class="section-heading">
-    <h2>🎓 Recommended Courses</h2>
-  </div>
-  <input class="search" id="courseSearch"
-    placeholder="Search courses..." oninput="searchCourses()">
-
-  <div class="grid" id="courseGrid">
-    <div class="card course">
-      <div class="icon">🐍</div>
-      <h3>Python Programming</h3>
-      <p>Start your coding journey.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-    <div class="card course">
-      <div class="icon">🧠</div>
-      <h3>Artificial Intelligence</h3>
-      <p>Discover the world of AI.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-    <div class="card course">
-      <div class="icon">📊</div>
-      <h3>Machine Learning</h3>
-      <p>Learn from data and patterns.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-    <div class="card course">
-      <div class="icon">🌐</div>
-      <h3>Web Development</h3>
-      <p>Build modern websites.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-    <div class="card course">
-      <div class="icon">📉</div>
-      <h3>Data Science</h3>
-      <p>Explore data and visualization.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-    <div class="card course">
-      <div class="icon">⚙️</div>
-      <h3>Full Stack Development</h3>
-      <p>Learn frontend and backend.</p>
-      <a href="enrollment.html" class="btn">Explore Course</a>
-    </div>
-  </div>
+<h2>🎓 Recommended Courses</h2>
+<input type="search" id="courseSearch" placeholder="Search courses..." oninput="searchCourses()">
+<div class="grid" id="courseList">
+  <div class="card course"><div class="emoji">🐍</div><h3>Python Programming</h3><p>Start your coding journey.</p><button class="btn course-btn" onclick="selectCourse('Python Programming')">Explore Course</button></div>
+  <div class="card course"><div class="emoji">🧠</div><h3>Artificial Intelligence</h3><p>Discover the world of AI.</p><button class="btn course-btn" onclick="selectCourse('Artificial Intelligence')">Explore Course</button></div>
+  <div class="card course"><div class="emoji">📊</div><h3>Machine Learning</h3><p>Learn from data and patterns.</p><button class="btn course-btn" onclick="selectCourse('Machine Learning')">Explore Course</button></div>
+  <div class="card course"><div class="emoji">🌐</div><h3>Web Development</h3><p>Build modern websites.</p><button class="btn course-btn" onclick="selectCourse('Web Development')">Explore Course</button></div>
+  <div class="card course"><div class="emoji">📉</div><h3>Data Science</h3><p>Explore data and visualization.</p><button class="btn course-btn" onclick="selectCourse('Data Science')">Explore Course</button></div>
+  <div class="card course"><div class="emoji">⚙️</div><h3>Full Stack Development</h3><p>Learn frontend and backend.</p><button class="btn course-btn" onclick="selectCourse('Full Stack Development')">Explore Course</button></div>
+</div>
 </section>
 
 <section class="section" id="progress">
-  <div class="section-heading">
-    <h2>📈 Progress Tracking</h2>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <h3>Overall Learning Progress</h3>
-      <div class="stat">0%</div>
-      <div class="progress"><span></span></div>
-      <p>Progress will appear after learning features are connected.</p>
-    </div>
-    <div class="card">
-      <h3>🏅 Student Achievements</h3>
-      <p>Certificates, badges and milestones will appear here.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="leaderboard">
-  <div class="section-heading">
-    <h2>🏆 Student Leaderboard</h2>
+<h2>📈 Progress Tracking</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Overall Learning Progress</h3>
+    <div class="number" id="progressNumber">0%</div>
+    <div class="progress-box"><div class="progress-fill" id="progressFill"></div></div>
+    <p id="progressMessage">Progress will appear as you select courses.</p>
   </div>
   <div class="card">
-    <div class="leader-row"><span>🥇 1. Student One</span><b>-- points</b></div>
-    <div class="leader-row"><span>🥈 2. Student Two</span><b>-- points</b></div>
-    <div class="leader-row"><span>🥉 3. Student Three</span><b>-- points</b></div>
-    <p style="margin-top:15px">Live student rankings will be connected later.</p>
+    <h3>🏅 Student Achievements</h3>
+    <p>Certificates, badges and milestones will appear here.</p>
   </div>
+</div>
 </section>
 
-<section class="section" id="assistant">
-  <div class="section-heading">
-    <h2>🤖 AI Nexus Assistant</h2>
-  </div>
-  <div class="chat-box">
-    <h3>Your Learning Assistant</h3>
-    <p style="color:var(--muted);margin-top:8px">
-      Ask a question to try the demo assistant.
-    </p>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-line">Hello! Welcome to AI Nexus. How can I help you learn today?</div>
-    </div>
-    <div class="chat-controls">
-      <input id="chatInput" placeholder="Ask something...">
-      <button class="btn" onclick="sendMessage()">Send</button>
-    </div>
-    <p style="font-size:12px;margin-top:12px;color:var(--muted)">
-      Demo assistant only. AI API integration will be added later.
-    </p>
-  </div>
+<section class="section">
+<h2>🏆 Student Leaderboard</h2>
+<div class="card leaderboard">
+  <div>🥇 1. Student One</div>
+  <div>🥈 2. Student Two</div>
+  <div>🥉 3. Student Three</div>
+  <p style="margin-top:15px">Live student rankings will be connected later.</p>
+</div>
 </section>
 
-<section class="section" id="notifications">
-  <div class="card">
-    <h2>🔔 Notifications</h2>
-    <p style="margin-top:12px">Your announcements and learning updates will appear here.</p>
+<section class="section">
+<h2>🤖 AI Nexus Assistant</h2>
+<div class="card chat-box">
+  <h3>Your Learning Assistant</h3>
+  <p>Ask a question to try the demo assistant.</p>
+  <div class="chat-messages" id="chatMessages">
+    Hello! Welcome to AI Nexus. How can I help you learn today?
   </div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Ask something..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="btn" onclick="sendMessage()">Send</button>
+  </div>
+  <p style="margin-top:12px;font-size:13px">Demo assistant only. AI API integration will be added later.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="card">
+  <h2>🔔 Notifications</h2>
+  <p>Your announcements and learning updates will appear here.</p>
+</div>
 </section>
 
 </main>
+</div>
+
+<!-- SIGN IN PAGE -->
+<div id="signin" class="page">
+  <div class="auth-wrap">
+    <span class="back-link" onclick="showPage('home')">← Back to Home</span>
+    <h1>Welcome Back!</h1>
+    <p>Sign in to continue your AI Nexus journey.</p>
+    <form id="signinForm">
+      <input type="email" id="loginEmail" placeholder="Email address" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button class="btn" type="submit">Sign In</button>
+    </form>
+    <button class="btn" id="googleLogin" type="button">Continue with Google</button>
+    <p class="message" id="loginMessage"></p>
+    <p>New here? <a href="#enroll" onclick="showPage('enroll')">Create an account</a></p>
+  </div>
+</div>
+
+<!-- ENROLLMENT PAGE -->
+<div id="enroll" class="page">
+  <div class="auth-wrap">
+    <span class="back-link" onclick="showPage('home')">← Back to Home</span>
+    <h1>Join AI Nexus ✨</h1>
+    <p>Complete your student enrollment.</p>
+    <form id="enrollForm">
+      <input type="text" id="studentName" placeholder="Full name" required>
+      <input type="email" id="studentEmail" placeholder="Email address" required>
+      <input type="tel" id="studentPhone" placeholder="Phone number" required>
+      <input type="text" id="studentCollege" placeholder="College / University" required>
+      <select id="studentCourse" required>
+        <option value="">Select your course</option>
+        <option>BTech CSE</option>
+        <option>BTech CSE AI/ML</option>
+        <option>BCA</option>
+        <option>MCA</option>
+        <option>Other</option>
+      </select>
+      <input type="password" id="studentPassword" placeholder="Create password (minimum 6 characters)" minlength="6" required>
+      <button class="btn" type="submit">Submit Enrollment</button>
+    </form>
+    <p class="message" id="enrollMessage"></p>
+    <p>Already registered? <a href="#signin" onclick="showPage('signin')">Sign In</a></p>
+  </div>
+</div>
 
 <footer>
   <h3>✦ AI Nexus</h3>
   <p>From Confusion to Confidence.</p>
-  <p style="margin-top:10px">Intelligent AI Learning & Career Platform</p>
-  <p style="margin-top:10px">© 2026 AI Nexus</p>
+  <p>Intelligent AI Learning & Career Platform</p>
+  <p>© 2026 AI Nexus</p>
 </footer>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
 <script>
-function toggleTheme() {
-  document.body.classList.toggle("dark");
+// =====================================
+// 1. FIREBASE CONFIGURATION
+// =====================================
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+
+let auth = null;
+
+try {
+  if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+  }
+} catch (error) {
+  console.error("Firebase setup error:", error);
 }
 
+// =====================================
+// 2. GOOGLE SHEETS WEB APP URL
+// =====================================
+
+const GOOGLE_SHEET_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+// =====================================
+// 3. PAGE NAVIGATION
+// =====================================
+
+function showPage(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+  window.scrollTo(0, 0);
+  history.replaceState(null, "", "#" + page);
+}
+
+window.addEventListener("load", () => {
+  const page = location.hash.replace("#", "");
+  if (["home", "signin", "enroll"].includes(page)) {
+    showPage(page);
+  }
+});
+
+// =====================================
+// 4. DARK AND LIGHT MODE
+// =====================================
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("aiTheme",
+    document.body.classList.contains("dark") ? "dark" : "light");
+}
+
+if (localStorage.getItem("aiTheme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+// =====================================
+// 5. COURSE SELECTION
+// =====================================
+
+let selectedCourses = JSON.parse(localStorage.getItem("aiCourses") || "[]");
+
+function selectCourse(course) {
+  if (!selectedCourses.includes(course)) {
+    selectedCourses.push(course);
+    localStorage.setItem("aiCourses", JSON.stringify(selectedCourses));
+  }
+  updateDashboard();
+  alert(course + " selected successfully!");
+}
+
+function updateDashboard() {
+  document.getElementById("courseCount").textContent = selectedCourses.length;
+  let progress = Math.min(selectedCourses.length * 15, 100);
+  document.getElementById("progressNumber").textContent = progress + "%";
+  document.getElementById("progressFill").style.width = progress + "%";
+  document.getElementById("progressMessage").textContent =
+    selectedCourses.length + " course(s) selected.";
+}
+
+updateDashboard();
+
+// =====================================
+// 6. LEARNING GOALS
+// =====================================
+
+let goals = Number(localStorage.getItem("aiGoals") || 0);
+
+function addGoal() {
+  goals++;
+  localStorage.setItem("aiGoals", goals);
+  document.getElementById("goalCount").textContent = goals;
+}
+
+document.getElementById("goalCount").textContent = goals;
+
+// =====================================
+// 7. COURSE SEARCH
+// =====================================
+
 function searchCourses() {
-  const query = document.getElementById("courseSearch").value.toLowerCase();
-  document.querySelectorAll(".course").forEach(course => {
-    course.style.display =
-      course.innerText.toLowerCase().includes(query) ? "flex" : "none";
+  const value = document.getElementById("courseSearch").value.toLowerCase();
+  document.querySelectorAll(".course").forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(value)
+      ? "" : "none";
   });
 }
 
+// =====================================
+// 8. DEMO AI CHATBOT
+// =====================================
+
 function sendMessage() {
   const input = document.getElementById("chatInput");
-  const messages = document.getElementById("chatMessages");
-  const question = input.value.trim();
+  const message = input.value.trim();
+  if (!message) return;
 
-  if (!question) return;
+  const box = document.getElementById("chatMessages");
+  const userLine = document.createElement("p");
+  userLine.textContent = "You: " + message;
+  box.appendChild(userLine);
 
-  const user = document.createElement("div");
-  user.className = "chat-line";
-  user.textContent = "You: " + question;
-  messages.appendChild(user);
+  let answer = "I can help you explore Python, AI, Machine Learning and Web Development. Ask me about one of these topics!";
 
-  const reply = document.createElement("div");
-  reply.className = "chat-line";
-  reply.textContent =
-    "AI Nexus Demo: Thanks for your question! The live AI assistant will be connected in a future update.";
-  messages.appendChild(reply);
+  if (message.toLowerCase().includes("python")) {
+    answer = "Python is a beginner-friendly programming language. Start with variables, data types, loops and functions.";
+  } else if (message.toLowerCase().includes("machine learning")) {
+    answer = "Machine Learning is a branch of AI where computers learn patterns from data.";
+  } else if (message.toLowerCase().includes("career")) {
+    answer = "Explore AI Engineer, Data Scientist and Software Developer career paths.";
+  } else if (message.toLowerCase().includes("web")) {
+    answer = "Start web development with HTML, CSS and JavaScript.";
+  }
 
+  const botLine = document.createElement("p");
+  botLine.textContent = "AI Nexus: " + answer;
+  box.appendChild(botLine);
   input.value = "";
-  messages.scrollTop = messages.scrollHeight;
 }
 
-document.getElementById("chatInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") sendMessage();
+// =====================================
+// 9. STUDENT ENROLLMENT
+// =====================================
+
+document.getElementById("enrollForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const message = document.getElementById("enrollMessage");
+  const name = document.getElementById("studentName").value.trim();
+  const email = document.getElementById("studentEmail").value.trim();
+  const phone = document.getElementById("studentPhone").value.trim();
+  const college = document.getElementById("studentCollege").value.trim();
+  const course = document.getElementById("studentCourse").value;
+  const password = document.getElementById("studentPassword").value;
+
+  if (!auth) {
+    message.textContent = "Please configure Firebase first. Enrollment is not active yet.";
+    return;
+  }
+
+  if (GOOGLE_SHEET_URL.includes("YOUR_GOOGLE")) {
+    message.textContent = "Please configure your Google Sheets connection first.";
+    return;
+  }
+
+  message.textContent = "Creating your account...";
+
+  try {
+    const credential = await auth.createUserWithEmailAndPassword(email, password);
+    await credential.user.updateProfile({ displayName: name });
+
+    const response = await fetch(GOOGLE_SHEET_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name, email, phone, college, course
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("Enrollment record could not be saved.");
+    }
+
+    message.textContent = "Enrollment successful! Welcome to AI Nexus.";
+    this.reset();
+
+  } catch (error) {
+    message.textContent = error.message;
+  }
 });
+
+// =====================================
+// 10. STUDENT SIGN IN
+// =====================================
+
+document.getElementById("signinForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const message = document.getElementById("loginMessage");
+
+  if (!auth) {
+    message.textContent = "Please configure Firebase first.";
+    return;
+  }
+
+  try {
+    await auth.signInWithEmailAndPassword(
+      document.getElementById("loginEmail").value,
+      document.getElementById("loginPassword").value
+    );
+    message.textContent = "Signed in successfully!";
+    setTimeout(() => showPage("home"), 1000);
+  } catch (error) {
+    message.textContent = error.message;
+  }
+});
+
+// =====================================
+// 11. GOOGLE SIGN IN
+// =====================================
+
+document.getElementById("googleLogin").addEventListener("click", async function() {
+  const message = document.getElementById("loginMessage");
+
+  if (!auth) {
+    message.textContent = "Please configure Firebase first.";
+    return;
+  }
+
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    await auth.signInWithPopup(provider);
+    message.textContent = "Google sign in successful!";
+    setTimeout(() => showPage("home"), 1000);
+  } catch (error) {
+    message.textContent = error.message;
+  }
+});
+
+// =====================================
+// 12. AUTHENTICATION STATUS
+// =====================================
+
+if (auth) {
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      console.log("Logged in:", user.email);
+    } else {
+      console.log("No user signed in.");
+    }
+  });
+}
 </script>
 
 </body>
