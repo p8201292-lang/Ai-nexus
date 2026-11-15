@@ -2,210 +2,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Nexus | From Confusion to Confidence</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Nexus | From Confusion to Confidence</title>
 
-  <style>
-    :root {
-      --bg: #fff8fa;
-      --surface: #ffffff;
-      --text: #33252d;
-      --muted: #806d77;
-      --primary: #d77d9e;
-      --primary-dark: #b95e81;
-      --soft: #f9e5ed;
-      --border: #f0dce4;
-      --shadow: 0 8px 28px rgba(110, 60, 80, .09);
-    }
-
-    body.dark {
-      --bg: #19151a;
-      --surface: #262027;
-      --text: #fff0f5;
-      --muted: #c0aeb8;
-      --primary: #e99ab7;
-      --primary-dark: #d77d9e;
-      --soft: #3a2933;
-      --border: #483540;
-      --shadow: 0 8px 28px rgba(0,0,0,.2);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: .25s;
-    }
-
-    button, input, select { font: inherit; }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 15px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    nav { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    nav button, .theme-btn {
-      border: none;
-      background: transparent;
-      color: var(--text);
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    nav button:hover, .theme-btn:hover { background: var(--soft); }
-
-    .container {
-      width: min(1100px, 90%);
-      margin: 35px auto;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, #f9dce7, #fff1f5);
-      color: #553343;
-      padding: 65px 35px;
-      border-radius: 22px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    body.dark .hero {
-      background: linear-gradient(120deg, #49303d, #34242e);
-      color: #fff0f5;
-    }
-
-    .hero h1 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 16px; }
-    .hero p { font-size: 17px; line-height: 1.7; }
-
-    .btn {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 12px 21px;
-      border: none;
-      border-radius: 9px;
-      margin: 8px 5px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .btn:hover { background: var(--primary-dark); }
-    .btn.secondary { background: var(--soft); color: var(--text); }
-    .btn.google { background: #fff; color: #333; border: 1px solid #ddd; }
-
-    .section-title { margin-bottom: 20px; font-size: 27px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 22px;
-    }
-
-    .card {
-      background: var(--surface);
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 { margin: 10px 0; }
-    .card p { color: var(--muted); line-height: 1.6; }
-    .emoji { font-size: 30px; }
-
-    .panel {
-      max-width: 560px;
-      margin: 35px auto;
-      background: var(--surface);
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel h2 { margin-bottom: 20px; }
-
-    label {
-      display: block;
-      margin: 14px 0 7px;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-    }
-
-    input:focus, select:focus { border-color: var(--primary); }
-
-    .panel .btn { width: 100%; margin: 16px 0 5px; }
-
-    .message {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 8px;
-      display: none;
-      background: var(--soft);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .hidden { display: none !important; }
-
-    .text-link {
-      color: var(--primary-dark);
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .stat {
-      font-size: 27px;
-      font-weight: bold;
-      color: var(--primary-dark);
-      margin-top: 12px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 50px;
-    }
-
-    @media(max-width:600px) {
-      header { justify-content: center; }
-      nav { justify-content: center; }
-      .hero { padding: 40px 20px; }
-      .panel { padding: 22px; }
-    }
-  </style>
+<style>
+:root {
+  --bg:#fff8fa;
+  --surface:#ffffff;
+  --text:#382a32;
+  --muted:#897580;
+  --pink:#ce819c;
+  --pink-dark:#ae617e;
+  --soft:#f8e7ed;
+  --border:#f0dce4;
+  --shadow:0 8px 28px rgba(120,70,90,.08);
+}
+body.dark {
+  --bg:#17151a;
+  --surface:#242027;
+  --text:#fff1f6;
+  --muted:#bbaab4;
+  --pink:#e39bb5;
+  --pink-dark:#d17e9d;
+  --soft:#392b35;
+  --border:#493943;
+  --shadow:0 8px 28px rgba(0,0,0,.2);
+}
+* {box-sizing:border-box;margin:0;padding:0}
+body {
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+button,input {font:inherit}
+button {cursor:pointer}
+header {
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:16px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo {font-size:25px;font-weight:800;color:var(--pink-dark)}
+nav {display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+nav a,nav button {
+  color:var(--text);
+  background:transparent;
+  border:0;
+  text-decoration:none;
+  padding:10px;
+  border-radius:8px;
+}
+nav a:hover,nav button:hover {background:var(--soft)}
+.btn {
+  border:0;
+  background:var(--pink);
+  color:white;
+  padding:12px 20px;
+  border-radius:9px;
+  font-weight:bold;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn:hover {background:var(--pink-dark)}
+.btn-outline {
+  background:var(--soft);
+  color:var(--text);
+}
+.container {width:min(1150px,92%);margin:auto}
+.hero {
+  margin-top:30px;
+  padding:65px 35px;
+  border-radius:22px;
+  background:linear-gradient(120deg,#f5d9e3,#fff0f4);
+  color:#543545;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+body.dark .hero {
+  background:linear-gradient(120deg,#4b303e,#30232d);
+  color:#fff1f6;
+}
+.hero h1 {font-size:clamp(32px,5vw,53px);margin-bottom:15px}
+.hero p {line-height:1.8;font-size:17px}
+.hero .btn {margin:20px 5px 0}
+.section {margin:48px 0}
+.section-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.section-heading h2 {font-size:25px}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.card {
+  background:var(--surface);
+  padding:23px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+.card h3 {margin:12px 0 9px}
+.card p {color:var(--muted);line-height:1.6}
+.icon {font-size:31px}
+.card a {
+  display:inline-block;
+  margin-top:15px;
+  color:var(--pink-dark);
+  text-decoration:none;
+  font-weight:bold;
+}
+.stat {font-size:28px;color:var(--pink-dark);font-weight:bold;margin-top:12px}
+.progress {
+  height:9px;
+  background:var(--soft);
+  border-radius:20px;
+  margin-top:15px;
+  overflow:hidden;
+}
+.progress span {
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--pink);
+}
+.search {
+  width:100%;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--surface);
+  color:var(--text);
+  margin-bottom:20px;
+}
+.course {display:flex;flex-direction:column}
+.course .btn {margin-top:15px;text-align:center}
+.leader-row {
+  display:flex;
+  justify-content:space-between;
+  padding:14px 5px;
+  border-bottom:1px solid var(--border);
+}
+.chat-box {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+}
+.chat-messages {
+  min-height:100px;
+  max-height:220px;
+  overflow:auto;
+  margin:15px 0;
+}
+.chat-line {
+  background:var(--soft);
+  padding:12px;
+  border-radius:10px;
+  margin:8px 0;
+  line-height:1.5;
+}
+.chat-controls {display:flex;gap:8px}
+.chat-controls input {
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--bg);
+  color:var(--text);
+}
+footer {
+  text-align:center;
+  padding:30px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  margin-top:50px;
+}
+@media(max-width:700px) {
+  header {flex-direction:column}
+  nav {justify-content:center}
+  .hero {padding:42px 20px}
+  .chat-controls {flex-direction:column}
+}
+</style>
 </head>
 
 <body>
@@ -213,419 +206,260 @@
 <header>
   <div class="logo">✦ AI Nexus</div>
   <nav>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('courses')">Courses</button>
-    <button onclick="showPage('enrollment')">Enrollment</button>
-    <button onclick="showPage('dashboard')">Dashboard</button>
-    <button onclick="showPage('signin')">Sign In</button>
-    <button class="theme-btn" onclick="toggleTheme()">☾ / ☀</button>
+    <a href="#home">Home</a>
+    <a href="#learning">Learning</a>
+    <a href="#career">Career</a>
+    <a href="#courses">Courses</a>
+    <a href="#progress">Progress</a>
+    <a href="signin.html">Sign In</a>
+    <a href="enrollment.html" class="btn">Enroll Now</a>
+    <button onclick="toggleTheme()" title="Change theme">☾ / ☀</button>
   </nav>
 </header>
 
 <main class="container">
 
-  <!-- HOME -->
-  <section id="home">
-    <div class="hero">
-      <h1>Welcome to AI Nexus</h1>
-      <p><strong>From Confusion to Confidence.</strong></p>
-      <p>Your intelligent learning and career development platform.</p>
-      <br>
-      <button class="btn" onclick="showPage('enrollment')">Enroll Now</button>
-      <button class="btn secondary" onclick="showPage('signin')">Student Sign In</button>
-    </div>
+<section class="hero" id="home">
+  <h1>Welcome to AI Nexus!</h1>
+  <h2>From Confusion to Confidence.</h2>
+  <p>Your intelligent companion for learning, skills and career growth.</p>
+  <p>Learn smarter. Build skills. Discover your future.</p>
+  <a href="#learning" class="btn">Explore Dashboard</a>
+  <a href="enrollment.html" class="btn btn-outline">Join AI Nexus</a>
+</section>
 
-    <h2 class="section-title" style="margin-top:40px">Explore AI Nexus</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="emoji">📚</div>
-        <h3>AI Learning Hub</h3>
-        <p>Explore learning resources and improve your technical skills.</p>
-      </div>
-      <div class="card">
-        <div class="emoji">🎯</div>
-        <h3>Career Guidance</h3>
-        <p>Explore career paths and discover skills for your future.</p>
-      </div>
-      <div class="card">
-        <div class="emoji">🤖</div>
-        <h3>AI Assistant</h3>
-        <p>Get help with learning, technology and project ideas.</p>
-      </div>
-      <div class="card">
-        <div class="emoji">📊</div>
-        <h3>Progress Tracking</h3>
-        <p>Keep track of your learning journey and achievements.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- COURSES -->
-  <section id="courses" class="hidden">
-    <h2 class="section-title">Learning Courses</h2>
-    <div class="grid">
-      <div class="card"><div class="emoji">🐍</div><h3>Python Programming</h3><p>Build your programming foundation.</p></div>
-      <div class="card"><div class="emoji">🧠</div><h3>Artificial Intelligence</h3><p>Understand AI concepts and applications.</p></div>
-      <div class="card"><div class="emoji">📈</div><h3>Machine Learning</h3><p>Learn how machines find patterns in data.</p></div>
-      <div class="card"><div class="emoji">🌐</div><h3>Web Development</h3><p>Learn HTML, CSS and JavaScript.</p></div>
-      <div class="card"><div class="emoji">📊</div><h3>Data Science</h3><p>Explore data analysis and visualization.</p></div>
-      <div class="card"><div class="emoji">💻</div><h3>Full Stack Development</h3><p>Understand frontend and backend development.</p></div>
-    </div>
-    <button class="btn" onclick="showPage('enrollment')">Enroll in a Course</button>
-  </section>
-
-  <!-- SIGN IN -->
-  <section id="signin" class="hidden">
-    <div class="panel">
-      <h2>Student Sign In</h2>
-      <label>Email Address</label>
-      <input id="loginEmail" type="email" placeholder="Enter your email">
-
-      <label>Password</label>
-      <input id="loginPassword" type="password" placeholder="Enter your password">
-
-      <button class="btn" onclick="signIn()">Sign In</button>
-      <button class="btn google" onclick="googleSignIn()">Continue with Google</button>
-
-      <p style="margin-top:15px">
-        <span class="text-link" onclick="forgotPassword()">Forgot Password?</span>
-      </p>
-      <p style="margin-top:15px">New student?
-        <span class="text-link" onclick="showPage('signup')">Create an account</span>
-      </p>
-      <div id="loginMessage" class="message"></div>
-    </div>
-  </section>
-
-  <!-- SIGN UP -->
-  <section id="signup" class="hidden">
-    <div class="panel">
-      <h2>Create Student Account</h2>
-
-      <label>Full Name</label>
-      <input id="signupName" type="text" placeholder="Your full name">
-
-      <label>Email Address</label>
-      <input id="signupEmail" type="email" placeholder="Your email">
-
-      <label>Password</label>
-      <input id="signupPassword" type="password" minlength="6" placeholder="At least 6 characters">
-
-      <button class="btn" onclick="signUp()">Create Account</button>
-      <p style="margin-top:15px">Already registered?
-        <span class="text-link" onclick="showPage('signin')">Sign In</span>
-      </p>
-      <div id="signupMessage" class="message"></div>
-    </div>
-  </section>
-
-  <!-- ENROLLMENT -->
-  <section id="enrollment" class="hidden">
-    <div class="panel">
-      <h2>Student Enrollment Form</h2>
-      <p style="color:var(--muted)">Complete your details to enroll in AI Nexus.</p>
-
-      <label>Full Name</label>
-      <input id="enrollName" type="text" placeholder="Enter full name" required>
-
-      <label>Email Address</label>
-      <input id="enrollEmail" type="email" placeholder="Enter email" required>
-
-      <label>Phone Number</label>
-      <input id="enrollPhone" type="tel" placeholder="Enter phone number" required>
-
-      <label>College / University</label>
-      <input id="enrollCollege" type="text" placeholder="Enter college name" required>
-
-      <label>Degree / Course</label>
-      <select id="enrollDegree">
-        <option value="">Select your course</option>
-        <option>BTech CSE</option>
-        <option>BTech CSE AI/ML</option>
-        <option>BCA</option>
-        <option>BSc Computer Science</option>
-        <option>Other</option>
-      </select>
-
-      <label>Year of Study</label>
-      <select id="enrollYear">
-        <option value="">Select year</option>
-        <option>1st Year</option>
-        <option>2nd Year</option>
-        <option>3rd Year</option>
-        <option>4th Year</option>
-      </select>
-
-      <label>Choose Learning Course</label>
-      <select id="enrollCourse">
-        <option value="">Select course</option>
-        <option>Python Programming</option>
-        <option>Artificial Intelligence</option>
-        <option>Machine Learning</option>
-        <option>Data Science</option>
-        <option>Web Development</option>
-        <option>Full Stack Development</option>
-      </select>
-
-      <label>Learning Level</label>
-      <select id="enrollLevel">
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Advanced</option>
-      </select>
-
-      <button class="btn" onclick="submitEnrollment()">Submit Enrollment</button>
-      <div id="enrollMessage" class="message"></div>
-    </div>
-  </section>
-
-  <!-- DASHBOARD -->
-  <section id="dashboard" class="hidden">
-    <h2 class="section-title">Student Dashboard</h2>
+<section class="section" id="dashboard">
+  <div class="section-heading">
+    <h2>📊 AI Learning Dashboard</h2>
+    <span>Welcome, Learner!</span>
+  </div>
+  <div class="grid">
     <div class="card">
-      <h3>Welcome, <span id="studentName">Student</span>!</h3>
-      <p id="studentEmail">Sign in to access your student dashboard.</p>
-      <button class="btn" onclick="showPage('enrollment')">Complete Enrollment</button>
-      <button class="btn secondary" onclick="signOutUser()">Sign Out</button>
+      <div class="icon">📚</div>
+      <h3>My Courses</h3>
+      <p>Your selected learning courses.</p>
+      <div class="stat">0</div>
     </div>
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Learning Goals</h3>
+      <p>Set and achieve your learning goals.</p>
+      <div class="stat">0</div>
+    </div>
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>Achievements</h3>
+      <p>Celebrate your learning milestones.</p>
+      <div class="stat">0</div>
+    </div>
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Skill Development</h3>
+      <p>Build your technical knowledge.</p>
+      <div class="stat">Start</div>
+    </div>
+  </div>
+</section>
 
-    <div class="grid">
-      <div class="card"><div class="emoji">📚</div><h3>My Courses</h3><p>Explore your learning courses.</p><div class="stat">0</div></div>
-      <div class="card"><div class="emoji">📊</div><h3>My Progress</h3><p>Your learning progress.</p><div class="stat">0%</div></div>
-      <div class="card"><div class="emoji">🏆</div><h3>Achievements</h3><p>Your learning milestones.</p><div class="stat">0</div></div>
+<section class="section" id="learning">
+  <div class="section-heading">
+    <h2>🧠 AI Learning Hub</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📖</div>
+      <h3>Smart Learning</h3>
+      <p>Explore concepts through structured learning resources.</p>
     </div>
-  </section>
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>Practice Zone</h3>
+      <p>Improve your knowledge with practice activities.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔍</div>
+      <h3>AI Tools Explorer</h3>
+      <p>Discover useful AI tools for students and developers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="career">
+  <div class="section-heading">
+    <h2>🚀 AI Career Guidance</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI Engineer</h3>
+      <p>Explore artificial intelligence skills and career paths.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h3>Data Scientist</h3>
+      <p>Explore data analysis, statistics and machine learning.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Software Developer</h3>
+      <p>Build programming and software development skills.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="section-heading">
+    <h2>🎓 Recommended Courses</h2>
+  </div>
+  <input class="search" id="courseSearch"
+    placeholder="Search courses..." oninput="searchCourses()">
+
+  <div class="grid" id="courseGrid">
+    <div class="card course">
+      <div class="icon">🐍</div>
+      <h3>Python Programming</h3>
+      <p>Start your coding journey.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+    <div class="card course">
+      <div class="icon">🧠</div>
+      <h3>Artificial Intelligence</h3>
+      <p>Discover the world of AI.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+    <div class="card course">
+      <div class="icon">📊</div>
+      <h3>Machine Learning</h3>
+      <p>Learn from data and patterns.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+    <div class="card course">
+      <div class="icon">🌐</div>
+      <h3>Web Development</h3>
+      <p>Build modern websites.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+    <div class="card course">
+      <div class="icon">📉</div>
+      <h3>Data Science</h3>
+      <p>Explore data and visualization.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+    <div class="card course">
+      <div class="icon">⚙️</div>
+      <h3>Full Stack Development</h3>
+      <p>Learn frontend and backend.</p>
+      <a href="enrollment.html" class="btn">Explore Course</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="progress">
+  <div class="section-heading">
+    <h2>📈 Progress Tracking</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Overall Learning Progress</h3>
+      <div class="stat">0%</div>
+      <div class="progress"><span></span></div>
+      <p>Progress will appear after learning features are connected.</p>
+    </div>
+    <div class="card">
+      <h3>🏅 Student Achievements</h3>
+      <p>Certificates, badges and milestones will appear here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="leaderboard">
+  <div class="section-heading">
+    <h2>🏆 Student Leaderboard</h2>
+  </div>
+  <div class="card">
+    <div class="leader-row"><span>🥇 1. Student One</span><b>-- points</b></div>
+    <div class="leader-row"><span>🥈 2. Student Two</span><b>-- points</b></div>
+    <div class="leader-row"><span>🥉 3. Student Three</span><b>-- points</b></div>
+    <p style="margin-top:15px">Live student rankings will be connected later.</p>
+  </div>
+</section>
+
+<section class="section" id="assistant">
+  <div class="section-heading">
+    <h2>🤖 AI Nexus Assistant</h2>
+  </div>
+  <div class="chat-box">
+    <h3>Your Learning Assistant</h3>
+    <p style="color:var(--muted);margin-top:8px">
+      Ask a question to try the demo assistant.
+    </p>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-line">Hello! Welcome to AI Nexus. How can I help you learn today?</div>
+    </div>
+    <div class="chat-controls">
+      <input id="chatInput" placeholder="Ask something...">
+      <button class="btn" onclick="sendMessage()">Send</button>
+    </div>
+    <p style="font-size:12px;margin-top:12px;color:var(--muted)">
+      Demo assistant only. AI API integration will be added later.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="notifications">
+  <div class="card">
+    <h2>🔔 Notifications</h2>
+    <p style="margin-top:12px">Your announcements and learning updates will appear here.</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <h3>✦ AI Nexus</h3>
   <p>From Confusion to Confidence.</p>
-  <p>© 2026 AI Nexus. All rights reserved.</p>
+  <p style="margin-top:10px">Intelligent AI Learning & Career Platform</p>
+  <p style="margin-top:10px">© 2026 AI Nexus</p>
 </footer>
 
-<script type="module">
-  // STEP: Replace these values with your Firebase web app configuration.
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
 
-  // Add your deployed Google Apps Script web app URL later.
-  const GOOGLE_SHEETS_URL = "";
+function searchCourses() {
+  const query = document.getElementById("courseSearch").value.toLowerCase();
+  document.querySelectorAll(".course").forEach(course => {
+    course.style.display =
+      course.innerText.toLowerCase().includes(query) ? "flex" : "none";
+  });
+}
 
-  import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const messages = document.getElementById("chatMessages");
+  const question = input.value.trim();
 
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-    sendPasswordResetEmail,
-    onAuthStateChanged,
-    signOut,
-    updateProfile
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+  if (!question) return;
 
-  import {
-    getFirestore,
-    doc,
-    setDoc,
-    addDoc,
-    collection,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+  const user = document.createElement("div");
+  user.className = "chat-line";
+  user.textContent = "You: " + question;
+  messages.appendChild(user);
 
-  let auth = null;
-  let db = null;
-  let firebaseReady = false;
+  const reply = document.createElement("div");
+  reply.className = "chat-line";
+  reply.textContent =
+    "AI Nexus Demo: Thanks for your question! The live AI assistant will be connected in a future update.";
+  messages.appendChild(reply);
 
-  const loginMessage = document.getElementById("loginMessage");
-  const signupMessage = document.getElementById("signupMessage");
-  const enrollMessage = document.getElementById("enrollMessage");
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+}
 
-  function message(element, text) {
-    element.textContent = text;
-    element.style.display = "block";
-  }
-
-  try {
-    if (
-      firebaseConfig.apiKey !== "YOUR_API_KEY" &&
-      firebaseConfig.projectId !== "YOUR_PROJECT_ID"
-    ) {
-      const app = initializeApp(firebaseConfig);
-      auth = getAuth(app);
-      db = getFirestore(app);
-      firebaseReady = true;
-
-      onAuthStateChanged(auth, user => {
-        document.getElementById("studentName").textContent =
-          user?.displayName || "Student";
-        document.getElementById("studentEmail").textContent =
-          user?.email || "Sign in to access your dashboard.";
-
-        if (user) {
-          document.getElementById("enrollEmail").value = user.email || "";
-          document.getElementById("enrollName").value = user.displayName || "";
-        }
-      });
-    } else {
-      console.warn("Add your Firebase configuration to enable authentication.");
-    }
-  } catch (error) {
-    console.error("Firebase setup error:", error);
-  }
-
-  window.showPage = function(page) {
-    document.querySelectorAll("main section").forEach(section =>
-      section.classList.add("hidden")
-    );
-    document.getElementById(page).classList.remove("hidden");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  window.toggleTheme = function() {
-    document.body.classList.toggle("dark");
-  };
-
-  window.signUp = async function() {
-    if (!firebaseReady) return message(signupMessage, "Please configure Firebase first.");
-
-    const name = document.getElementById("signupName").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value;
-
-    if (!name || !email || password.length < 6) {
-      return message(signupMessage, "Enter your name, valid email and a password of at least 6 characters.");
-    }
-
-    try {
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(result.user, { displayName: name });
-      await setDoc(doc(db, "users", result.user.uid), {
-        name, email, createdAt: serverTimestamp()
-      });
-      message(signupMessage, "Account created successfully! You can now enroll.");
-      showPage("enrollment");
-    } catch (error) {
-      message(signupMessage, error.message);
-    }
-  };
-
-  window.signIn = async function() {
-    if (!firebaseReady) return message(loginMessage, "Please configure Firebase first.");
-
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      message(loginMessage, "Sign in successful!");
-      showPage("dashboard");
-    } catch (error) {
-      message(loginMessage, error.message);
-    }
-  };
-
-  window.googleSignIn = async function() {
-    if (!firebaseReady) return message(loginMessage, "Please configure Firebase first.");
-
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      await setDoc(doc(db, "users", result.user.uid), {
-        name: result.user.displayName || "",
-        email: result.user.email || "",
-        updatedAt: serverTimestamp()
-      }, { merge: true });
-      showPage("dashboard");
-    } catch (error) {
-      message(loginMessage, error.message);
-    }
-  };
-
-  window.forgotPassword = async function() {
-    if (!firebaseReady) return message(loginMessage, "Please configure Firebase first.");
-
-    const email = document.getElementById("loginEmail").value.trim();
-    if (!email) return message(loginMessage, "Enter your email address first.");
-
-    try {
-      await sendPasswordResetEmail(auth, email);
-      message(loginMessage, "Password reset email sent. Check your inbox.");
-    } catch (error) {
-      message(loginMessage, error.message);
-    }
-  };
-
-  window.signOutUser = async function() {
-    if (auth) {
-      await signOut(auth);
-      showPage("home");
-    }
-  };
-
-  window.submitEnrollment = async function() {
-    if (!firebaseReady) return message(enrollMessage, "Please configure Firebase first.");
-    if (!auth.currentUser) {
-      message(enrollMessage, "Please sign in or create an account before enrolling.");
-      showPage("signin");
-      return;
-    }
-
-    const enrollment = {
-      uid: auth.currentUser.uid,
-      name: document.getElementById("enrollName").value.trim(),
-      email: document.getElementById("enrollEmail").value.trim(),
-      phone: document.getElementById("enrollPhone").value.trim(),
-      college: document.getElementById("enrollCollege").value.trim(),
-      degree: document.getElementById("enrollDegree").value,
-      year: document.getElementById("enrollYear").value,
-      course: document.getElementById("enrollCourse").value,
-      level: document.getElementById("enrollLevel").value,
-      createdAt: serverTimestamp()
-    };
-
-    if (!enrollment.name || !enrollment.email || !enrollment.phone ||
-        !enrollment.college || !enrollment.degree ||
-        !enrollment.year || !enrollment.course) {
-      return message(enrollMessage, "Please complete all required fields.");
-    }
-
-    try {
-      const ref = await addDoc(collection(db, "enrollments"), enrollment);
-
-      // Optional reporting copy to Google Sheets.
-      // Never send passwords or authentication tokens to Sheets.
-      if (GOOGLE_SHEETS_URL) {
-        try {
-          await fetch(GOOGLE_SHEETS_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({
-              ...enrollment,
-              createdAt: new Date().toISOString(),
-              enrollmentId: ref.id
-            })
-          });
-        } catch (sheetError) {
-          console.error("Google Sheets reporting error:", sheetError);
-        }
-      }
-
-      message(enrollMessage, "Your enrollment has been saved in Firebase!");
-    } catch (error) {
-      message(enrollMessage, "Enrollment failed: " + error.message);
-    }
-  };
+document.getElementById("chatInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") sendMessage();
+});
 </script>
 
 </body>
