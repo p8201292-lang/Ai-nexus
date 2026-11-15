@@ -49,11 +49,21 @@ header {
   justify-content: space-between;
   gap: 15px;
 }
-.logo {
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 27px;
   font-weight: bold;
   color: var(--primary);
   white-space: nowrap;
+}
+
+.logo-img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  border-radius: 10px;
 }
 nav {
   display: flex;
@@ -181,7 +191,10 @@ footer {
 <body>
 
 <header>
-  <div class="logo">✦ AI Nexus</div>
+<div class="brand">
+    <img src="logo.png" alt="AI Nexus Logo" class="logo-img">
+    <span>AI Nexus</span>
+</div>
 
   <nav>
     <a href="#home" onclick="showPage('home')">Home</a>
@@ -382,7 +395,10 @@ footer {
 </div>
 
 <footer>
-  <h3>✦ AI Nexus</h3>
+<div class="brand" style="justify-content:center;">
+    <img src="logo.png" alt="AI Nexus Logo" class="logo-img">
+    <span>AI Nexus</span>
+</div>
   <p>From Confusion to Confidence.</p>
   <p>Intelligent AI Learning & Career Platform</p>
   <p>© 2026 AI Nexus</p>
