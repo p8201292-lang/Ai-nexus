@@ -1,85 +1,15 @@
-function toggleTheme() {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Nexus</title>
+</head>
+<body style="background:#fffaf9; text-align:center; padding:100px; font-family:Arial;">
 
-  document.body.classList.toggle("dark");
+    <h1 style="color:#b87985;">Welcome to AI Nexus!</h1>
 
-  const dark =
-    document.body.classList.contains("dark");
+    <h2>From Confusion to Confidence.</h2>
 
-  document.getElementById("themeBtn").textContent =
-    dark ? "☀️ Light Mode" : "🌙 Dark Mode";
-
-  localStorage.setItem(
-    "aiNexusTheme",
-    dark ? "dark" : "light"
-  );
-
-}
-
-// RESTORE SAVED THEME
-
-const savedTheme =
-  localStorage.getItem("aiNexusTheme");
-
-if (savedTheme === "dark") {
-
-  document.body.classList.add("dark");
-
-  document.getElementById("themeBtn").textContent =
-    "☀️ Light Mode";
-
-}
-
-// SIGNUP FORM VALIDATION
-
-document.getElementById("signupForm")
-.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const password =
-    document.getElementById("signupPassword").value;
-
-  const confirm =
-    document.getElementById("confirmPassword").value;
-
-  const message =
-    document.getElementById("message");
-
-  if (password !== confirm) {
-
-    message.textContent =
-      "⚠️ Passwords do not match!";
-
-    return;
-
-  }
-
-  message.textContent =
-    "Signup form validated! Connect Firebase authentication to create your account.";
-
-});
-
-// LOGIN FORM
-
-document.getElementById("loginForm")
-.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  document.getElementById("message").textContent =
-    "Login form submitted! Connect Firebase authentication to verify your account.";
-
-});
-
-</script>
+    <p>Your website is working successfully.</p>
 
 </body>
 </html>
-
-
-
-
-
-    
-
-
