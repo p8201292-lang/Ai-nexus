@@ -9,443 +9,612 @@
 <style>
 :root {
     --primary: #c65b83;
-    --primary-dark: #a9436b;
-    --primary-light: #f5dce6;
+    --primary-dark: #a9476e;
+    --pink-light: #f8e6ed;
+    --pink-soft: #fff5f9;
     --bg: #fffafd;
     --card: #ffffff;
-    --text: #342832;
-    --muted: #81727c;
+    --text: #392b35;
+    --muted: #897783;
     --border: #f0dce5;
-    --shadow: 0 8px 25px rgba(120,65,90,.09);
+    --shadow: 0 8px 28px rgba(120,65,90,.08);
 }
 
 body.dark {
-    --bg: #17131a;
-    --card: #251e29;
+    --bg: #19151b;
+    --card: #251e28;
     --text: #f8edf3;
-    --muted: #c2aebb;
-    --border: #443342;
-    --primary-light: #493040;
-    --shadow: 0 8px 25px rgba(0,0,0,.25);
+    --muted: #c0adba;
+    --border: #40313e;
+    --pink-soft: #33232f;
+    --pink-light: #49303f;
+    --shadow: 0 8px 28px rgba(0,0,0,.2);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     transition: .3s;
-    line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button, input, select, textarea {
+button, input, textarea, select {
     font: inherit;
 }
 
 button {
     cursor: pointer;
-    border: none;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
+/* TOP NAVIGATION */
 
-/* NAVBAR */
-.navbar {
-    min-height: 100px;
-    padding: 5px 20px 5px 5px;
+.topbar {
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    padding: 0 28px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* BIG LOGO EXTREME LEFT */
-.logo {
+.brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-right: auto;
-    flex-shrink: 0;
-}
-
-.logo img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
-
-.logo span {
-    font-size: 32px;
-    font-weight: 800;
+    text-decoration: none;
     color: var(--primary);
+    font-size: 27px;
+    font-weight: 800;
     white-space: nowrap;
 }
 
-.nav-links {
+.brand img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.top-actions {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 10px;
 }
 
-.nav-links a {
-    font-size: 14px;
-    font-weight: 600;
-    transition: .2s;
-}
-
-.nav-links a:hover {
+.top-btn {
+    border: 1px solid var(--border);
+    background: var(--pink-soft);
     color: var(--primary);
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 650;
 }
 
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.icon-btn, .theme-btn, .menu-btn {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--primary-light);
-    color: var(--primary);
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-.menu-btn {
-    display: none;
-}
-
-.btn {
-    display: inline-block;
+.top-btn:hover {
     background: var(--primary);
     color: white;
-    padding: 10px 18px;
-    border-radius: 9px;
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--pink-light);
+    color: var(--primary);
+    border: 0;
+    padding: 10px 13px;
+    border-radius: 10px;
+    font-size: 21px;
+}
+
+/* APP LAYOUT */
+
+.app {
+    display: flex;
+    min-height: calc(100vh - 76px);
+}
+
+.sidebar {
+    width: 245px;
+    flex-shrink: 0;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 25px 16px;
+    position: sticky;
+    top: 76px;
+    height: calc(100vh - 76px);
+    overflow-y: auto;
+}
+
+.side-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 12px 12px 8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    margin: 4px 0;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 12px;
     font-weight: 600;
     transition: .2s;
 }
 
-.btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-}
-
-.btn-outline:hover {
-    background: var(--primary-light);
+.nav-link:hover,
+.nav-link.active {
+    background: var(--pink-light);
     color: var(--primary);
 }
 
-/* GENERAL SECTIONS */
-section {
-    padding: 65px 7%;
-    scroll-margin-top: 110px;
+.nav-icon {
+    width: 23px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    padding: 30px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.section {
+    margin-bottom: 42px;
 }
 
 .section-heading {
-    text-align: center;
-    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .section-heading h2 {
-    color: var(--primary);
-    font-size: 32px;
-    margin-bottom: 8px;
+    font-size: 23px;
 }
 
 .section-heading p {
     color: var(--muted);
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    padding: 23px;
-    box-shadow: var(--shadow);
-    transition: .25s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-}
-
-.card-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    margin-bottom: 8px;
-}
-
-.card p {
-    color: var(--muted);
+    margin-top: 5px;
     font-size: 14px;
-    margin-bottom: 15px;
 }
 
-/* SMALLER HERO / GATEWAY */
+/* HERO */
+
 .hero {
-    min-height: 340px;
-    padding: 40px 7%;
+    background: linear-gradient(120deg, #c65b83, #e99ab8);
+    border-radius: 24px;
+    padding: 38px;
+    color: white;
     display: flex;
     align-items: center;
-    background: linear-gradient(120deg, var(--bg), var(--primary-light));
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.hero::after {
+    content: "✦";
+    position: absolute;
+    right: 8%;
+    top: -65px;
+    font-size: 230px;
+    color: rgba(255,255,255,.12);
 }
 
 .hero-content {
-    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
 }
 
-.eyebrow {
-    color: var(--primary);
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 11px;
+.hero-tag {
+    background: rgba(255,255,255,.2);
+    padding: 8px 13px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 18px;
 }
 
 .hero h1 {
-    font-size: clamp(34px, 4vw, 48px);
-    line-height: 1.15;
-    margin: 10px 0;
-}
-
-.hero h1 span {
-    color: var(--primary);
+    font-size: clamp(29px, 4vw, 43px);
+    margin-bottom: 12px;
 }
 
 .hero p {
-    color: var(--muted);
-    font-size: 15px;
-    max-width: 550px;
-    margin-bottom: 18px;
+    line-height: 1.7;
+    opacity: .95;
+    max-width: 540px;
 }
 
 .hero-buttons {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    margin-top: 23px;
 }
 
-/* DASHBOARD */
-.stats .card {
-    text-align: center;
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 19px;
+    border-radius: 11px;
+    font-weight: 750;
+    border: 1px solid white;
+    background: white;
+    color: var(--primary-dark);
 }
 
-.stat-number {
-    color: var(--primary);
-    font-size: 32px;
-    font-weight: bold;
+.hero-btn.secondary {
+    background: transparent;
+    color: white;
 }
 
-/* LEARNING TOOLS */
-.tool-panel, .career-detail {
-    display: none;
-    margin-top: 25px;
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 17px;
+}
+
+.card {
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 25px;
-    border-radius: 16px;
+    border-radius: 18px;
+    padding: 21px;
     box-shadow: var(--shadow);
+    transition: .2s;
 }
 
-.tool-panel.active, .career-detail.active {
-    display: block;
+.card:hover {
+    transform: translateY(-4px);
 }
 
-.tool-panel h3, .career-detail h3 {
-    color: var(--primary);
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    width: 49px;
+    height: 49px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: var(--pink-light);
+    font-size: 23px;
+}
+
+.stat-card h3 {
+    font-size: 25px;
+    margin-bottom: 3px;
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.feature-card {
+    cursor: pointer;
+}
+
+.feature-icon {
+    width: 49px;
+    height: 49px;
+    display: grid;
+    place-items: center;
+    background: var(--pink-light);
+    border-radius: 14px;
+    font-size: 24px;
     margin-bottom: 15px;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 14px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    background: var(--bg);
-    color: var(--text);
-    outline-color: var(--primary);
+.feature-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
 }
 
-textarea {
-    min-height: 110px;
-    resize: vertical;
+.feature-card p {
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: 13px;
 }
 
-label {
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.tool-result {
-    background: var(--primary-light);
-    padding: 15px;
-    border-radius: 10px;
+.card-action {
+    display: inline-block;
     margin-top: 15px;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-}
-
-.note-item, .task-item {
-    padding: 12px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    margin: 9px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.small-btn {
-    padding: 7px 11px;
-    background: var(--primary-light);
     color: var(--primary);
-    border-radius: 7px;
+    font-weight: 750;
+    font-size: 13px;
+    text-decoration: none;
 }
 
-.career-detail ul {
-    margin: 8px 0 18px 22px;
+/* CAREER */
+
+.career-card {
+    border-top: 4px solid var(--primary);
+}
+
+.career-card h3 {
+    margin-bottom: 9px;
+}
+
+.career-card p {
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.career-card button {
+    margin-top: 15px;
+    background: var(--pink-light);
+    color: var(--primary);
+    border: 0;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-weight: 700;
+}
+
+/* COURSES */
+
+.course-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.course-top {
+    background: linear-gradient(120deg,#f5d4e1,#fceef4);
+    color: #a9476e;
+    padding: 25px;
+    font-size: 30px;
+}
+
+.course-body {
+    padding: 19px;
+}
+
+.course-body p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.course-body a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 750;
 }
 
 /* PROGRESS */
+
+.progress-row {
+    margin: 19px 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 650;
+}
+
 .progress-track {
-    height: 12px;
-    background: var(--primary-light);
-    border-radius: 20px;
+    background: var(--pink-light);
+    height: 10px;
+    border-radius: 30px;
     overflow: hidden;
-    margin: 12px 0;
 }
 
 .progress-fill {
-    width: 35%;
-    height: 100%;
     background: var(--primary);
+    height: 100%;
+    border-radius: 30px;
 }
 
-/* FOOTER */
-footer {
+/* LEADERBOARD */
+
+.leader-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid var(--border);
+}
+
+.leader-row:last-child {
+    border-bottom: 0;
+}
+
+.leader-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rank {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--pink-light);
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* TOOLS */
+
+.tool-panel {
     background: var(--card);
-    border-top: 1px solid var(--border);
-    padding: 35px 7%;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    margin-top: 18px;
+}
+
+textarea,
+input[type="text"] {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 10px;
+    outline: none;
+    margin-top: 10px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.action-btn {
+    border: 0;
+    background: var(--primary);
+    color: white;
+    padding: 11px 17px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.action-btn:hover {
+    background: var(--primary-dark);
+}
+
+.output {
+    background: var(--pink-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    display: none;
+}
+
+footer {
     text-align: center;
     color: var(--muted);
-}
-
-footer strong {
-    color: var(--primary);
-}
-
-.hidden {
-    display: none !important;
+    padding: 25px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
 }
 
 /* RESPONSIVE */
-@media(max-width: 1100px) {
-    .menu-btn {
-        display: inline-flex;
-    }
 
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        background: var(--card);
-        flex-direction: column;
-        align-items: flex-start;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    header {
-        position: sticky;
+@media(max-width:1100px) {
+    .grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
     }
 }
 
-@media(max-width: 600px) {
-    .navbar {
-        min-height: 75px;
-        padding: 5px 8px 5px 3px;
-        gap: 7px;
+@media(max-width:760px) {
+    .topbar {
+        padding: 0 14px;
+        height: 68px;
     }
 
-    .logo img {
-        width: 60px;
-        height: 60px;
+    .brand {
+        font-size: 21px;
     }
 
-    .logo span {
-        font-size: 22px;
+    .brand img {
+        width: 42px;
+        height: 42px;
     }
 
-    .nav-actions {
-        gap: 5px;
+    .menu-toggle {
+        display: block;
     }
 
-    .icon-btn, .theme-btn, .menu-btn {
-        width: 34px;
-        height: 34px;
-        font-size: 16px;
+    .top-btn {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 68px;
+        left: -260px;
+        height: calc(100vh - 68px);
+        z-index: 90;
+        transition: .25s;
+        box-shadow: var(--shadow);
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main {
+        padding: 18px 14px;
     }
 
     .hero {
-        min-height: 290px;
-        padding: 32px 5%;
+        padding: 27px 22px;
+    }
+
+    .hero::after {
+        right: -30px;
+        font-size: 150px;
+    }
+}
+
+@media(max-width:480px) {
+    .grid {
+        grid-template-columns: 1fr;
     }
 
     .hero h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
-    section {
-        padding: 48px 5%;
+    .top-actions {
+        gap: 5px;
+    }
+
+    .top-btn {
+        font-size: 11px;
+        padding: 8px;
     }
 
     .section-heading h2 {
-        font-size: 27px;
+        font-size: 20px;
     }
 }
 </style>
@@ -453,747 +622,856 @@ footer strong {
 
 <body>
 
-<header>
-<nav class="navbar">
+<header class="topbar">
 
-    <a href="#home" class="logo">
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <a href="#home" class="brand">
         <img src="logo.png" alt="AI Nexus Logo"
              onerror="this.style.display='none'">
         <span>AI Nexus</span>
     </a>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-    <div class="nav-links" id="navLinks">
-        <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#dashboard" onclick="closeMenu()">Dashboard</a>
-        <a href="#learning" onclick="closeMenu()">Learning</a>
-        <a href="#career" onclick="closeMenu()">Career</a>
-        <a href="#courses" onclick="closeMenu()">Courses</a>
-        <a href="#progress" onclick="closeMenu()">Progress</a>
+    <div class="top-actions">
+        <a href="auth.html" class="top-btn">Login</a>
+        <a href="enrollment.html" class="top-btn">Enroll</a>
+        <button class="top-btn" onclick="toggleTheme()" id="themeButton"
+                aria-label="Toggle dark mode">🌙</button>
     </div>
 
-    <div class="nav-actions">
-        <a href="#home" class="icon-btn" title="Home">⌂</a>
-        <a href="auth.html" class="icon-btn" title="Login">👤</a>
-        <a href="enrollment.html" class="icon-btn" title="Student Enrollment">📝</a>
-        <button class="theme-btn" onclick="toggleTheme()" title="Theme">🌙</button>
-    </div>
-
-</nav>
 </header>
 
-<!-- HOME -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <span class="eyebrow">YOUR AI-POWERED LEARNING COMPANION</span>
+<div class="app">
 
-        <h1>
-            From Confusion<br>
-            to <span>Confidence.</span>
-        </h1>
+<!-- SIDEBAR -->
 
-        <p>
-            Learn new skills, explore AI tools, discover career paths
-            and build your future with AI Nexus.
-        </p>
+<aside class="sidebar" id="sidebar">
 
-        <div class="hero-buttons">
-            <a href="#learning" class="btn">Explore Learning</a>
-            <a href="#career" class="btn btn-outline">Explore Careers</a>
+    <div class="side-label">MAIN MENU</div>
+
+    <a href="#home" class="nav-link active">
+        <span class="nav-icon">⌂</span> Dashboard
+    </a>
+
+    <a href="#learning" class="nav-link">
+        <span class="nav-icon">📚</span> Learning Hub
+    </a>
+
+    <a href="#career" class="nav-link">
+        <span class="nav-icon">🚀</span> Career Guidance
+    </a>
+
+    <a href="#courses" class="nav-link">
+        <span class="nav-icon">🎓</span> Courses
+    </a>
+
+    <a href="#progress" class="nav-link">
+        <span class="nav-icon">📈</span> My Progress
+    </a>
+
+    <a href="#leaderboard" class="nav-link">
+        <span class="nav-icon">🏆</span> Leaderboard
+    </a>
+
+    <div class="side-label">STUDY TOOLS</div>
+
+    <a href="#notes" class="nav-link">
+        <span class="nav-icon">📝</span> Smart Notes
+    </a>
+
+    <a href="#extractor" class="nav-link">
+        <span class="nav-icon">📄</span> Text Extractor
+    </a>
+
+    <a href="#quiz" class="nav-link">
+        <span class="nav-icon">🧠</span> Quiz Generator
+    </a>
+
+    <a href="#planner" class="nav-link">
+        <span class="nav-icon">📅</span> Study Planner
+    </a>
+
+    <div class="side-label">ACCOUNT</div>
+
+    <a href="auth.html" class="nav-link">
+        <span class="nav-icon">👤</span> Sign In
+    </a>
+
+    <a href="enrollment.html" class="nav-link">
+        <span class="nav-icon">📋</span> Enrollment
+    </a>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+
+<main class="main">
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tag">✦ YOUR PERSONAL LEARNING SPACE</span>
+
+            <h1>Welcome to AI Nexus</h1>
+
+            <p>
+                Learn smarter, explore new skills, discover your career path
+                and turn your confusion into confidence.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#learning" class="hero-btn">Explore Learning</a>
+                <a href="#career" class="hero-btn secondary">Explore Careers</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- DASHBOARD -->
-<section id="dashboard">
-    <div class="section-heading">
-        <h2>Your Dashboard</h2>
-        <p>Your learning journey starts here.</p>
-    </div>
+    <!-- DASHBOARD -->
 
-    <div class="grid stats">
-        <div class="card">
-            <div class="card-icon">📚</div>
-            <div class="stat-number">06</div>
-            <h3>Learning Tools</h3>
-            <p>Tools for your study journey</p>
-        </div>
+    <section class="section" id="dashboard">
 
-        <div class="card">
-            <div class="card-icon">🎯</div>
-            <div class="stat-number">06</div>
-            <h3>Career Paths</h3>
-            <p>Explore technology careers</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🏆</div>
-            <div class="stat-number">01</div>
-            <h3>Learning Journey</h3>
-            <p>Start building your skills</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">⚡</div>
-            <div class="stat-number">24/7</div>
-            <h3>Learn Anytime</h3>
-            <p>Access your learning tools</p>
-        </div>
-    </div>
-</section>
-
-<!-- LEARNING HUB -->
-<section id="learning">
-    <div class="section-heading">
-        <h2>AI Learning Hub</h2>
-        <p>Smart tools to make learning easier.</p>
-    </div>
-
-    <div class="grid">
-        <div class="card">
-            <div class="card-icon">📝</div>
-            <h3>Smart Notes</h3>
-            <p>Create and save your study notes.</p>
-            <button class="btn" onclick="openTool('notesPanel')">Open Notes</button>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📄</div>
-            <h3>Document Extractor</h3>
-            <p>Read the content of TXT documents.</p>
-            <button class="btn" onclick="openTool('documentPanel')">Extract Text</button>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🧠</div>
-            <h3>Quiz Generator</h3>
-            <p>Practise with sample topic questions.</p>
-            <button class="btn" onclick="openTool('quizPanel')">Start Quiz</button>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📅</div>
-            <h3>Study Planner</h3>
-            <p>Organise your study tasks.</p>
-            <button class="btn" onclick="openTool('plannerPanel')">Open Planner</button>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">💡</div>
-            <h3>Study Tips</h3>
-            <p>Simple tips to improve your study routine.</p>
-            <button class="btn" onclick="openTool('tipsPanel')">View Tips</button>
+        <div class="section-heading">
+            <div>
+                <h2>Your Dashboard</h2>
+                <p>Your learning space at a glance.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="card-icon">🤖</div>
-            <h3>AI Learning Assistant</h3>
-            <p>Get a basic study guide for a topic.</p>
-            <button class="btn" onclick="openTool('assistantPanel')">Open Assistant</button>
-        </div>
-    </div>
+        <div class="grid">
 
-    <!-- NOTES -->
-    <div class="tool-panel" id="notesPanel">
-        <h3>📝 Smart Notes</h3>
-        <label>Note Title</label>
-        <input id="noteTitle" placeholder="Enter note title">
-        <label>Your Notes</label>
-        <textarea id="noteContent" placeholder="Write your notes here..."></textarea>
-        <button class="btn" onclick="saveNote()">Save Note</button>
-        <div id="notesList"></div>
-    </div>
+            <div class="card stat-card">
+                <div class="stat-icon">📚</div>
+                <div>
+                    <h3 id="notesCount">0</h3>
+                    <p>Notes Saved</p>
+                </div>
+            </div>
 
-    <!-- DOCUMENT EXTRACTOR -->
-    <div class="tool-panel" id="documentPanel">
-        <h3>📄 TXT Document Extractor</h3>
-        <p>Choose a TXT file to read its content.</p>
-        <input type="file" id="textFile" accept=".txt">
-        <button class="btn" onclick="extractText()">Extract Content</button>
-        <div class="tool-result" id="extractedText">
-            Extracted text will appear here.
+            <div class="card stat-card">
+                <div class="stat-icon">🧠</div>
+                <div>
+                    <h3 id="quizCount">0</h3>
+                    <p>Quizzes Attempted</p>
+                </div>
+            </div>
+
+            <div class="card stat-card">
+                <div class="stat-icon">🎯</div>
+                <div>
+                    <h3>6</h3>
+                    <p>Career Roadmaps</p>
+                </div>
+            </div>
+
+            <div class="card stat-card">
+                <div class="stat-icon">⭐</div>
+                <div>
+                    <h3 id="pointsCount">0</h3>
+                    <p>Learning Points</p>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+    <!-- LEARNING HUB -->
+
+    <section class="section" id="learning">
+
+        <div class="section-heading">
+            <div>
+                <h2>Learning Hub</h2>
+                <p>Everything you need for smarter learning.</p>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <a href="#notes" class="card feature-card"
+               style="color:inherit;text-decoration:none">
+                <div class="feature-icon">📝</div>
+                <h3>Smart Notes</h3>
+                <p>Create, save and organize your study notes.</p>
+                <span class="card-action">Open Notes →</span>
+            </a>
+
+            <a href="#extractor" class="card feature-card"
+               style="color:inherit;text-decoration:none">
+                <div class="feature-icon">📄</div>
+                <h3>Document Extractor</h3>
+                <p>Read and extract text from TXT documents.</p>
+                <span class="card-action">Extract Text →</span>
+            </a>
+
+            <a href="#quiz" class="card feature-card"
+               style="color:inherit;text-decoration:none">
+                <div class="feature-icon">🧠</div>
+                <h3>Quiz Generator</h3>
+                <p>Practice with a sample knowledge quiz.</p>
+                <span class="card-action">Start Quiz →</span>
+            </a>
+
+            <a href="#planner" class="card feature-card"
+               style="color:inherit;text-decoration:none">
+                <div class="feature-icon">📅</div>
+                <h3>Study Planner</h3>
+                <p>Write and organize your study tasks.</p>
+                <span class="card-action">Plan Study →</span>
+            </a>
+
+            <div class="card feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Study Tips</h3>
+                <p>Use small goals, active recall and regular revision.</p>
+                <span class="card-action">Stay Consistent ✦</span>
+            </div>
+
+            <div class="card feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Learning Assistant</h3>
+                <p>Use an AI assistant service of your choice for explanations.</p>
+                <a class="card-action"
+                   href="https://chatgpt.com/" target="_blank"
+                   rel="noopener">Open Assistant →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SMART NOTES -->
+
+    <section class="section" id="notes">
+        <div class="section-heading">
+            <div>
+                <h2>Smart Notes</h2>
+                <p>Write and save your learning notes in this browser.</p>
+            </div>
+        </div>
+
+        <div class="tool-panel">
+            <input type="text" id="noteTitle" placeholder="Enter note title">
+            <textarea id="noteText" placeholder="Write your notes here..."></textarea>
+            <button class="action-btn" onclick="saveNote()">Save Note</button>
+            <div id="notesOutput" class="output"></div>
+        </div>
+    </section>
+
+    <!-- TEXT EXTRACTOR -->
+
+    <section class="section" id="extractor">
+        <div class="section-heading">
+            <div>
+                <h2>Document Text Extractor</h2>
+                <p>Extract readable text from a TXT file.</p>
+            </div>
+        </div>
+
+        <div class="tool-panel">
+            <input type="file" id="textFile" accept=".txt">
+            <button class="action-btn" onclick="extractText()">Extract Text</button>
+            <div id="extractOutput" class="output"></div>
+        </div>
+    </section>
 
     <!-- QUIZ -->
-    <div class="tool-panel" id="quizPanel">
-        <h3>🧠 Quiz Generator</h3>
-        <label>Select Topic</label>
-        <select id="quizTopic">
-            <option value="python">Python</option>
-            <option value="ai">Artificial Intelligence</option>
-            <option value="web">Web Development</option>
-        </select>
-        <button class="btn" onclick="startQuiz()">Generate Quiz</button>
-        <div id="quizArea"></div>
-    </div>
+
+    <section class="section" id="quiz">
+        <div class="section-heading">
+            <div>
+                <h2>Knowledge Quiz</h2>
+                <p>Try this sample Python quiz.</p>
+            </div>
+        </div>
+
+        <div class="tool-panel">
+            <h3 id="question">What is Python?</h3>
+
+            <div id="answers" style="display:grid;gap:10px;margin-top:18px">
+                <button class="action-btn" onclick="answerQuiz(0)">A programming language</button>
+                <button class="action-btn" onclick="answerQuiz(1)">A web browser</button>
+                <button class="action-btn" onclick="answerQuiz(2)">An operating system</button>
+            </div>
+
+            <p id="quizFeedback" style="margin-top:15px"></p>
+            <button class="action-btn" onclick="nextQuestion()">Next Question</button>
+        </div>
+    </section>
 
     <!-- PLANNER -->
-    <div class="tool-panel" id="plannerPanel">
-        <h3>📅 Study Planner</h3>
-        <input id="taskInput" placeholder="Enter your study task">
-        <input id="taskDate" type="date">
-        <button class="btn" onclick="addTask()">Add Task</button>
-        <div id="taskList"></div>
-    </div>
 
-    <!-- TIPS -->
-    <div class="tool-panel" id="tipsPanel">
-        <h3>💡 Study Tips</h3>
-        <ul>
-            <li>Set a clear learning goal.</li>
-            <li>Break large topics into smaller sections.</li>
-            <li>Practise coding regularly.</li>
-            <li>Take short breaks while studying.</li>
-            <li>Revise what you learn.</li>
-            <li>Build small projects to practise your skills.</li>
-        </ul>
-    </div>
+    <section class="section" id="planner">
+        <div class="section-heading">
+            <div>
+                <h2>Study Planner</h2>
+                <p>Make a simple personal study task list.</p>
+            </div>
+        </div>
 
-    <!-- ASSISTANT -->
-    <div class="tool-panel" id="assistantPanel">
-        <h3>🤖 Learning Assistant</h3>
-        <p>This is a basic study guide helper, not a live AI chatbot.</p>
-        <input id="assistantTopic" placeholder="Enter a topic">
-        <button class="btn" onclick="explainTopic()">Get Study Guide</button>
-        <div class="tool-result" id="assistantResult"></div>
-    </div>
-</section>
+        <div class="tool-panel">
+            <input type="text" id="taskInput" placeholder="Enter your study task">
+            <button class="action-btn" onclick="addTask()">Add Task</button>
+            <div id="taskList" style="margin-top:15px"></div>
+        </div>
+    </section>
 
-<!-- CAREER GUIDANCE -->
-<section id="career">
-    <div class="section-heading">
-        <h2>Career Guidance</h2>
-        <p>Discover your future in technology.</p>
-    </div>
+    <!-- CAREER GUIDANCE -->
 
-    <div class="grid">
-        <div class="card">
-            <div class="card-icon">🤖</div>
-            <h3>AI Engineer</h3>
-            <p>Build intelligent applications.</p>
-            <button class="btn" onclick="careerInfo('ai')">Explore Roadmap</button>
+    <section class="section" id="career">
+
+        <div class="section-heading">
+            <div>
+                <h2>Career Guidance</h2>
+                <p>Explore career paths and the skills they require.</p>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <div class="card career-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Engineer</h3>
+                <p>Python, mathematics, machine learning and AI concepts.</p>
+                <button onclick="showCareer('AI Engineer','Python, mathematics, statistics, machine learning, deep learning and AI projects.')">View Roadmap</button>
+            </div>
+
+            <div class="card career-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data Scientist</h3>
+                <p>Statistics, Python, data analysis and visualization.</p>
+                <button onclick="showCareer('Data Scientist','Statistics, Python, SQL, data cleaning, visualization and machine learning.')">View Roadmap</button>
+            </div>
+
+            <div class="card career-card">
+                <div class="feature-icon">💻</div>
+                <h3>Software Developer</h3>
+                <p>Programming, problem-solving and software design.</p>
+                <button onclick="showCareer('Software Developer','Programming fundamentals, data structures, algorithms, Git and software projects.')">View Roadmap</button>
+            </div>
+
+            <div class="card career-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Full Stack Developer</h3>
+                <p>Frontend, backend, databases and deployment.</p>
+                <button onclick="showCareer('Full Stack Developer','HTML, CSS, JavaScript, a backend language, databases, APIs and deployment.')">View Roadmap</button>
+            </div>
+
+            <div class="card career-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Cybersecurity Analyst</h3>
+                <p>Networking, security basics and risk awareness.</p>
+                <button onclick="showCareer('Cybersecurity Analyst','Networking, operating systems, security fundamentals, ethical practices and defensive tools.')">View Roadmap</button>
+            </div>
+
+            <div class="card career-card">
+                <div class="feature-icon">📱</div>
+                <h3>App Developer</h3>
+                <p>Mobile programming, UI design and app development.</p>
+                <button onclick="showCareer('App Developer','Programming fundamentals, mobile development, UI design, APIs and app testing.')">View Roadmap</button>
+            </div>
+
+        </div>
+
+        <div id="careerOutput" class="tool-panel" style="display:none"></div>
+    </section>
+
+    <!-- COURSES -->
+
+    <section class="section" id="courses">
+
+        <div class="section-heading">
+            <div>
+                <h2>Explore Courses</h2>
+                <p>Choose a subject to begin your learning journey.</p>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <div class="card course-card">
+                <div class="course-top">🐍</div>
+                <div class="course-body">
+                    <h3>Python Programming</h3>
+                    <p>Start with variables, conditions, loops and functions.</p>
+                    <a href="enrollment.html">Enroll Now →</a>
+                </div>
+            </div>
+
+            <div class="card course-card">
+                <div class="course-top">🤖</div>
+                <div class="course-body">
+                    <h3>Artificial Intelligence</h3>
+                    <p>Explore AI concepts and real-world applications.</p>
+                    <a href="enrollment.html">Enroll Now →</a>
+                </div>
+            </div>
+
+            <div class="card course-card">
+                <div class="course-top">📊</div>
+                <div class="course-body">
+                    <h3>Data Science</h3>
+                    <p>Learn data analysis and visualization fundamentals.</p>
+                    <a href="enrollment.html">Enroll Now →</a>
+                </div>
+            </div>
+
+            <div class="card course-card">
+                <div class="course-top">🌐</div>
+                <div class="course-body">
+                    <h3>Web Development</h3>
+                    <p>Build websites using HTML, CSS and JavaScript.</p>
+                    <a href="enrollment.html">Enroll Now →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROGRESS -->
+
+    <section class="section" id="progress">
+
+        <div class="section-heading">
+            <div>
+                <h2>My Progress</h2>
+                <p>Example learning progress. Update these values as you learn.</p>
+            </div>
         </div>
 
         <div class="card">
-            <div class="card-icon">📊</div>
-            <h3>Data Scientist</h3>
-            <p>Analyse data and find insights.</p>
-            <button class="btn" onclick="careerInfo('data')">Explore Roadmap</button>
+
+            <div class="progress-row">
+                <div class="progress-info">
+                    <span>Python Programming</span>
+                    <span>60%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width:60%"></div>
+                </div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-info">
+                    <span>Artificial Intelligence</span>
+                    <span>40%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width:40%"></div>
+                </div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-info">
+                    <span>Web Development</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width:75%"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+
+    <section class="section" id="leaderboard">
+
+        <div class="section-heading">
+            <div>
+                <h2>Leaderboard</h2>
+                <p>Sample leaderboard layout for your future student community.</p>
+            </div>
         </div>
 
         <div class="card">
-            <div class="card-icon">💻</div>
-            <h3>Software Developer</h3>
-            <p>Develop software applications.</p>
-            <button class="btn" onclick="careerInfo('software')">Explore Roadmap</button>
+
+            <div class="leader-row">
+                <div class="leader-left">
+                    <span class="rank">1</span>
+                    <strong>Student One</strong>
+                </div>
+                <strong>950 pts</strong>
+            </div>
+
+            <div class="leader-row">
+                <div class="leader-left">
+                    <span class="rank">2</span>
+                    <strong>Student Two</strong>
+                </div>
+                <strong>820 pts</strong>
+            </div>
+
+            <div class="leader-row">
+                <div class="leader-left">
+                    <span class="rank">3</span>
+                    <strong>Student Three</strong>
+                </div>
+                <strong>700 pts</strong>
+            </div>
+
         </div>
+    </section>
 
-        <div class="card">
-            <div class="card-icon">🌐</div>
-            <h3>Full Stack Developer</h3>
-            <p>Build frontend and backend websites.</p>
-            <button class="btn" onclick="careerInfo('fullstack')">Explore Roadmap</button>
-        </div>
+    <footer>
+        © 2026 AI Nexus | From Confusion to Confidence
+    </footer>
 
-        <div class="card">
-            <div class="card-icon">🔐</div>
-            <h3>Cybersecurity Analyst</h3>
-            <p>Learn about digital security.</p>
-            <button class="btn" onclick="careerInfo('cyber')">Explore Roadmap</button>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📱</div>
-            <h3>App Developer</h3>
-            <p>Create mobile applications.</p>
-            <button class="btn" onclick="careerInfo('app')">Explore Roadmap</button>
-        </div>
-    </div>
-
-    <div class="career-detail" id="careerDetail"></div>
-</section>
-
-<!-- COURSES -->
-<section id="courses">
-    <div class="section-heading">
-        <h2>Explore Courses</h2>
-        <p>Choose a learning area and build your skills.</p>
-    </div>
-
-    <div class="grid">
-        <div class="card">
-            <div class="card-icon">🐍</div>
-            <h3>Python Programming</h3>
-            <p>Learn coding fundamentals.</p>
-            <a href="enrollment.html" class="btn">Enroll Now</a>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🧠</div>
-            <h3>Artificial Intelligence</h3>
-            <p>Explore AI concepts and applications.</p>
-            <a href="enrollment.html" class="btn">Enroll Now</a>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📈</div>
-            <h3>Data Science</h3>
-            <p>Start learning data analysis.</p>
-            <a href="enrollment.html" class="btn">Enroll Now</a>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🌐</div>
-            <h3>Web Development</h3>
-            <p>Learn HTML, CSS and JavaScript.</p>
-            <a href="enrollment.html" class="btn">Enroll Now</a>
-        </div>
-    </div>
-</section>
-
-<!-- PROGRESS -->
-<section id="progress">
-    <div class="section-heading">
-        <h2>My Progress</h2>
-        <p>Keep moving towards your learning goals.</p>
-    </div>
-
-    <div class="card">
-        <h3>Learning Progress</h3>
-        <p>This is a sample progress display, not connected to course completion.</p>
-        <div class="progress-track">
-            <div class="progress-fill"></div>
-        </div>
-        <strong>35% — Sample Progress</strong>
-    </div>
-
-    <div class="card" style="margin-top:20px">
-        <h3>🏆 Leaderboard</h3>
-        <p>Sample leaderboard display.</p>
-        <div class="task-item"><span>🥇 Learner 1</span><strong>950 points</strong></div>
-        <div class="task-item"><span>🥈 Learner 2</span><strong>850 points</strong></div>
-        <div class="task-item"><span>🥉 Learner 3</span><strong>750 points</strong></div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <h2><strong>✦ AI Nexus</strong></h2>
-    <p>From Confusion to Confidence.</p>
-    <p>Learn • Grow • Achieve</p>
-    <p>© 2026 AI Nexus. All rights reserved.</p>
-</footer>
+</main>
+</div>
 
 <script>
-/* NAVIGATION */
-function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
+
+/* SIDEBAR */
+
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
 }
 
-function closeMenu() {
-    document.getElementById("navLinks").classList.remove("show");
-}
+/* CLOSE MOBILE MENU AFTER CLICK */
 
-/* THEME */
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("sidebar").classList.remove("open");
+    });
+});
+
+/* ACTIVE NAVIGATION */
+
+const navLinks = document.querySelectorAll(".nav-link");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+
+/* DARK MODE */
+
 function toggleTheme() {
     document.body.classList.toggle("dark");
 
     const dark = document.body.classList.contains("dark");
+    document.getElementById("themeButton").textContent =
+        dark ? "☀️" : "🌙";
 
-    localStorage.setItem("aiNexusTheme", dark ? "dark" : "light");
-    document.querySelector(".theme-btn").textContent = dark ? "☀️" : "🌙";
+    try {
+        localStorage.setItem("aiNexusTheme", dark ? "dark" : "light");
+    } catch (error) {
+        console.log("Theme preference could not be saved.");
+    }
 }
 
-if (localStorage.getItem("aiNexusTheme") === "dark") {
-    document.body.classList.add("dark");
-    document.querySelector(".theme-btn").textContent = "☀️";
+try {
+    if (localStorage.getItem("aiNexusTheme") === "dark") {
+        document.body.classList.add("dark");
+        document.getElementById("themeButton").textContent = "☀️";
+    }
+} catch (error) {
+    console.log("Theme preference unavailable.");
 }
 
-/* OPEN LEARNING TOOLS */
-function openTool(id) {
-    document.querySelectorAll(".tool-panel").forEach(panel => {
-        panel.classList.remove("active");
-    });
+/* SAFE LOCAL STORAGE HELPERS */
 
-    document.getElementById(id).classList.add("active");
-    document.getElementById(id).scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+function readData(key, fallback) {
+    try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+    } catch (error) {
+        return fallback;
+    }
+}
 
-    if (id === "notesPanel") renderNotes();
-    if (id === "plannerPanel") renderTasks();
+function writeData(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch (error) {
+        alert("Browser storage is unavailable or full.");
+        return false;
+    }
 }
 
 /* SMART NOTES */
-function getNotes() {
-    return JSON.parse(localStorage.getItem("aiNexusNotes") || "[]");
-}
 
 function saveNote() {
     const title = document.getElementById("noteTitle").value.trim();
-    const content = document.getElementById("noteContent").value.trim();
+    const content = document.getElementById("noteText").value.trim();
 
     if (!title || !content) {
-        alert("Enter a title and note.");
+        alert("Please enter a title and your notes.");
         return;
     }
 
-    const notes = getNotes();
-    notes.push({title, content, id: Date.now()});
+    const notes = readData("aiNexusNotes", []);
+    notes.push({ title, content });
 
-    localStorage.setItem("aiNexusNotes", JSON.stringify(notes));
+    if (!writeData("aiNexusNotes", notes)) return;
 
     document.getElementById("noteTitle").value = "";
-    document.getElementById("noteContent").value = "";
+    document.getElementById("noteText").value = "";
 
-    renderNotes();
+    showNotes();
+    updateStats();
 }
 
-function renderNotes() {
-    const container = document.getElementById("notesList");
-    container.innerHTML = "<h3>Your Saved Notes</h3>";
+function showNotes() {
+    const notes = readData("aiNexusNotes", []);
+    const output = document.getElementById("notesOutput");
 
-    getNotes().forEach(note => {
-        const row = document.createElement("div");
-        row.className = "note-item";
+    output.style.display = "block";
 
-        const text = document.createElement("span");
-        text.textContent = note.title + ": " + note.content;
+    if (!notes.length) {
+        output.textContent = "Your saved notes will appear here.";
+        return;
+    }
 
-        const button = document.createElement("button");
-        button.className = "small-btn";
-        button.textContent = "Delete";
-        button.onclick = () => deleteNote(note.id);
+    output.replaceChildren();
 
-        row.append(text, button);
-        container.appendChild(row);
+    notes.forEach(note => {
+        const heading = document.createElement("h3");
+        heading.textContent = note.title;
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = note.content;
+        paragraph.style.margin = "8px 0 18px";
+
+        output.append(heading, paragraph);
     });
 }
 
-function deleteNote(id) {
-    const notes = getNotes().filter(note => note.id !== id);
-    localStorage.setItem("aiNexusNotes", JSON.stringify(notes));
-    renderNotes();
-}
+/* TEXT EXTRACTOR */
 
-/* TXT EXTRACTOR */
 function extractText() {
     const file = document.getElementById("textFile").files[0];
-    const output = document.getElementById("extractedText");
+    const output = document.getElementById("extractOutput");
 
     if (!file) {
-        output.textContent = "Please select a TXT file.";
+        alert("Please select a TXT file.");
+        return;
+    }
+
+    if (!file.name.toLowerCase().endsWith(".txt")) {
+        alert("Please select a TXT file only.");
         return;
     }
 
     const reader = new FileReader();
 
-    reader.onload = event => {
+    reader.onload = function(event) {
         output.textContent = event.target.result;
+        output.style.display = "block";
     };
 
-    reader.onerror = () => {
-        output.textContent = "Unable to read this file.";
+    reader.onerror = function() {
+        alert("Unable to read this file.");
     };
 
     reader.readAsText(file);
 }
 
-/* QUIZ */
-const quizQuestions = {
-    python: [
-        {
-            q: "Which keyword defines a function in Python?",
-            options: ["func", "def", "function", "define"],
-            answer: 1
-        },
-        {
-            q: "Which data type stores True or False?",
-            options: ["String", "Integer", "Boolean", "List"],
-            answer: 2
-        },
-        {
-            q: "Which symbol is used for comments in Python?",
-            options: ["//", "#", "/*", "$"],
-            answer: 1
-        }
-    ],
-    ai: [
-        {
-            q: "What does AI stand for?",
-            options: ["Automated Internet", "Artificial Intelligence", "Advanced Input", "Applied Information"],
-            answer: 1
-        },
-        {
-            q: "Which field helps computers learn from data?",
-            options: ["Machine Learning", "Typing", "Printing", "Formatting"],
-            answer: 0
-        },
-        {
-            q: "Which is an AI application?",
-            options: ["Voice assistant", "Paper notebook", "Ruler", "Pencil"],
-            answer: 0
-        }
-    ],
-    web: [
-        {
-            q: "Which language creates webpage structure?",
-            options: ["HTML", "Python", "SQL", "C"],
-            answer: 0
-        },
-        {
-            q: "Which language styles webpages?",
-            options: ["Java", "CSS", "C++", "PHP"],
-            answer: 1
-        },
-        {
-            q: "Which language adds webpage interactivity?",
-            options: ["JavaScript", "HTML only", "CSS only", "XML"],
-            answer: 0
-        }
-    ]
-};
+/* SAMPLE QUIZ */
 
-function startQuiz() {
-    const topic = document.getElementById("quizTopic").value;
-    const questions = quizQuestions[topic];
-    const area = document.getElementById("quizArea");
+const questions = [
+    {
+        question: "What is Python?",
+        answers: [
+            "A programming language",
+            "A web browser",
+            "An operating system"
+        ],
+        correct: 0
+    },
+    {
+        question: "Which language is used to style web pages?",
+        answers: ["Python", "CSS", "SQL"],
+        correct: 1
+    },
+    {
+        question: "What does AI stand for?",
+        answers: [
+            "Automatic Internet",
+            "Artificial Intelligence",
+            "Advanced Interface"
+        ],
+        correct: 1
+    }
+];
 
-    area.innerHTML = "<h3>Answer the Questions</h3>";
+let questionIndex = 0;
+let quizAnswered = false;
 
-    questions.forEach((question, index) => {
-        const box = document.createElement("div");
-        box.className = "card";
-        box.style.marginTop = "12px";
+function renderQuestion() {
+    const q = questions[questionIndex];
 
-        const heading = document.createElement("h4");
-        heading.textContent = (index + 1) + ". " + question.q;
-        box.appendChild(heading);
+    document.getElementById("question").textContent = q.question;
 
-        question.options.forEach((option, optionIndex) => {
-            const label = document.createElement("label");
-            label.style.display = "block";
+    const answers = document.getElementById("answers");
+    answers.replaceChildren();
 
-            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = "question" + index;
-            radio.value = optionIndex;
-            radio.style.width = "auto";
-
-            label.append(radio, document.createTextNode(option));
-            box.appendChild(label);
-        });
-
-        area.appendChild(box);
+    q.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.className = "action-btn";
+        button.textContent = answer;
+        button.onclick = () => answerQuiz(index);
+        answers.appendChild(button);
     });
 
-    const submit = document.createElement("button");
-    submit.className = "btn";
-    submit.textContent = "Submit Quiz";
-    submit.style.marginTop = "15px";
-    submit.onclick = () => checkQuiz(questions);
-
-    area.appendChild(submit);
+    document.getElementById("quizFeedback").textContent = "";
+    quizAnswered = false;
 }
 
-function checkQuiz(questions) {
-    let score = 0;
+function answerQuiz(index) {
+    if (quizAnswered) return;
 
-    questions.forEach((question, index) => {
-        const selected = document.querySelector(
-            'input[name="question' + index + '"]:checked'
-        );
+    quizAnswered = true;
 
-        if (selected && Number(selected.value) === question.answer) {
-            score++;
-        }
-    });
+    const correct = questions[questionIndex].correct;
+    const feedback = document.getElementById("quizFeedback");
 
-    let result = document.getElementById("quizResult");
+    if (index === correct) {
+        feedback.textContent = "Correct! Great work.";
+        feedback.style.color = "green";
 
-    if (!result) {
-        result = document.createElement("div");
-        result.id = "quizResult";
-        result.className = "tool-result";
-        document.getElementById("quizArea").appendChild(result);
+        const count = Number(readData("aiNexusQuizCount", 0)) + 1;
+        const points = Number(readData("aiNexusPoints", 0)) + 10;
+
+        writeData("aiNexusQuizCount", count);
+        writeData("aiNexusPoints", points);
+        updateStats();
+    } else {
+        feedback.textContent =
+            "Not quite. The correct answer is: " +
+            questions[questionIndex].answers[correct];
+        feedback.style.color = "var(--primary)";
     }
+}
 
-    result.textContent = "Your score: " + score + " out of " + questions.length;
+function nextQuestion() {
+    questionIndex = (questionIndex + 1) % questions.length;
+    renderQuestion();
 }
 
 /* STUDY PLANNER */
-function getTasks() {
-    return JSON.parse(localStorage.getItem("aiNexusTasks") || "[]");
-}
 
 function addTask() {
-    const task = document.getElementById("taskInput").value.trim();
-    const date = document.getElementById("taskDate").value;
+    const input = document.getElementById("taskInput");
+    const task = input.value.trim();
 
     if (!task) {
         alert("Please enter a task.");
         return;
     }
 
-    const tasks = getTasks();
-    tasks.push({task, date, done: false, id: Date.now()});
+    const tasks = readData("aiNexusTasks", []);
+    tasks.push({ text: task, done: false });
 
-    localStorage.setItem("aiNexusTasks", JSON.stringify(tasks));
+    if (!writeData("aiNexusTasks", tasks)) return;
 
-    document.getElementById("taskInput").value = "";
+    input.value = "";
     renderTasks();
 }
 
 function renderTasks() {
-    const container = document.getElementById("taskList");
-    container.innerHTML = "<h3>Your Tasks</h3>";
+    const tasks = readData("aiNexusTasks", []);
+    const list = document.getElementById("taskList");
 
-    getTasks().forEach(item => {
+    list.replaceChildren();
+
+    tasks.forEach((task, index) => {
         const row = document.createElement("div");
-        row.className = "task-item";
+        row.style.display = "flex";
+        row.style.alignItems = "center";
+        row.style.justifyContent = "space-between";
+        row.style.gap = "10px";
+        row.style.padding = "12px 0";
+        row.style.borderBottom = "1px solid var(--border)";
 
-        const text = document.createElement("span");
-        text.textContent =
-            (item.done ? "✓ " : "") + item.task +
-            (item.date ? " — " + item.date : "");
+        const label = document.createElement("label");
+        label.style.display = "flex";
+        label.style.alignItems = "center";
+        label.style.gap = "10px";
 
-        const done = document.createElement("button");
-        done.className = "small-btn";
-        done.textContent = item.done ? "Undo" : "Done";
-        done.onclick = () => toggleTask(item.id);
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.done;
+        checkbox.style.width = "auto";
 
-        const remove = document.createElement("button");
-        remove.className = "small-btn";
-        remove.textContent = "Delete";
-        remove.onclick = () => deleteTask(item.id);
-
-        row.append(text, done, remove);
-        container.appendChild(row);
-    });
-}
-
-function toggleTask(id) {
-    const tasks = getTasks().map(item => {
-        if (item.id === id) item.done = !item.done;
-        return item;
-    });
-
-    localStorage.setItem("aiNexusTasks", JSON.stringify(tasks));
-    renderTasks();
-}
-
-function deleteTask(id) {
-    const tasks = getTasks().filter(item => item.id !== id);
-    localStorage.setItem("aiNexusTasks", JSON.stringify(tasks));
-    renderTasks();
-}
-
-/* BASIC LEARNING ASSISTANT */
-function explainTopic() {
-    const topic = document.getElementById("assistantTopic").value.trim();
-    const result = document.getElementById("assistantResult");
-
-    if (!topic) {
-        result.textContent = "Please enter a topic.";
-        return;
-    }
-
-    result.textContent =
-        "Study Guide: " + topic +
-        "\n\n1. Understand the basic definition." +
-        "\n2. Learn the main concepts." +
-        "\n3. Study simple examples." +
-        "\n4. Practise questions." +
-        "\n5. Create revision notes." +
-        "\n\nThis is a basic study template, not a live AI response.";
-}
-
-/* CAREER ROADMAPS */
-const careers = {
-    ai: {
-        name: "AI Engineer",
-        description: "Build intelligent applications using AI.",
-        skills: ["Python", "Mathematics", "Machine Learning", "Deep Learning", "Data Handling"],
-        roadmap: ["Learn Python basics", "Study mathematics", "Understand machine learning", "Practise projects", "Explore deep learning"],
-        projects: ["Basic chatbot", "Image classification demo", "Student marks prediction"]
-    },
-    data: {
-        name: "Data Scientist",
-        description: "Analyse data and discover useful insights.",
-        skills: ["Python", "Statistics", "SQL", "Data Visualisation", "Machine Learning"],
-        roadmap: ["Learn Python", "Study statistics", "Learn SQL", "Practise data analysis", "Build projects"],
-        projects: ["Student performance analysis", "Sales dashboard", "Data visualisation"]
-    },
-    software: {
-        name: "Software Developer",
-        description: "Create and maintain software applications.",
-        skills: ["Programming", "Problem Solving", "Data Structures", "Git", "Testing"],
-        roadmap: ["Learn a programming language", "Study programming basics", "Learn data structures", "Build projects", "Learn testing"],
-        projects: ["Calculator", "To-do application", "Student management system"]
-    },
-    fullstack: {
-        name: "Full Stack Developer",
-        description: "Build both frontend and backend websites.",
-        skills: ["HTML", "CSS", "JavaScript", "Backend", "Databases"],
-        roadmap: ["Learn HTML and CSS", "Learn JavaScript", "Build responsive pages", "Learn backend", "Connect a database"],
-        projects: ["Portfolio website", "Registration website", "Task management app"]
-    },
-    cyber: {
-        name: "Cybersecurity Analyst",
-        description: "Help protect digital systems and information.",
-        skills: ["Networking", "Operating Systems", "Security Basics", "Risk Awareness"],
-        roadmap: ["Understand networking", "Learn operating systems", "Study security principles", "Use legal learning labs", "Explore security monitoring"],
-        projects: ["Security awareness guide", "Password safety demo", "Security presentation"]
-    },
-    app: {
-        name: "App Developer",
-        description: "Create applications for mobile devices.",
-        skills: ["Programming", "UI Design", "App Frameworks", "APIs", "Testing"],
-        roadmap: ["Learn programming", "Understand app design", "Choose a framework", "Build simple apps", "Test your projects"],
-        projects: ["Notes app", "Study timer app", "Student timetable app"]
-    }
-};
-
-function careerInfo(key) {
-    const career = careers[key];
-    const detail = document.getElementById("careerDetail");
-
-    detail.innerHTML = "";
-
-    const heading = document.createElement("h3");
-    heading.textContent = career.name + " — Career Roadmap";
-    detail.appendChild(heading);
-
-    const description = document.createElement("p");
-    description.textContent = career.description;
-    detail.appendChild(description);
-
-    function addList(title, items) {
-        const h4 = document.createElement("h4");
-        h4.textContent = title;
-        detail.appendChild(h4);
-
-        const ul = document.createElement("ul");
-
-        items.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            ul.appendChild(li);
+        checkbox.addEventListener("change", () => {
+            const current = readData("aiNexusTasks", []);
+            current[index].done = checkbox.checked;
+            writeData("aiNexusTasks", current);
+            renderTasks();
         });
 
-        detail.appendChild(ul);
-    }
+        const text = document.createElement("span");
+        text.textContent = task.text;
+        if (task.done) text.style.textDecoration = "line-through";
 
-    addList("Skills to Learn", career.skills);
-    addList("Step-by-Step Roadmap", career.roadmap);
-    addList("Beginner Project Ideas", career.projects);
+        label.append(checkbox, text);
 
-    detail.classList.add("active");
-    detail.scrollIntoView({behavior:"smooth", block:"start"});
+        const remove = document.createElement("button");
+        remove.textContent = "✕";
+        remove.className = "action-btn";
+        remove.style.marginTop = "0";
+        remove.addEventListener("click", () => {
+            const current = readData("aiNexusTasks", []);
+            current.splice(index, 1);
+            writeData("aiNexusTasks", current);
+            renderTasks();
+        });
+
+        row.append(label, remove);
+        list.appendChild(row);
+    });
 }
+
+/* CAREER ROADMAP */
+
+function showCareer(name, details) {
+    const output = document.getElementById("careerOutput");
+
+    output.style.display = "block";
+    output.replaceChildren();
+
+    const heading = document.createElement("h3");
+    heading.textContent = name + " Roadmap";
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = details;
+    paragraph.style.marginTop = "12px";
+    paragraph.style.lineHeight = "1.7";
+
+    const tip = document.createElement("p");
+    tip.textContent =
+        "Tip: Start with the fundamentals, practise regularly and build small projects.";
+    tip.style.marginTop = "12px";
+
+    output.append(heading, paragraph, tip);
+    output.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/* DASHBOARD COUNTERS */
+
+function updateStats() {
+    document.getElementById("notesCount").textContent =
+        readData("aiNexusNotes", []).length;
+
+    document.getElementById("quizCount").textContent =
+        readData("aiNexusQuizCount", 0);
+
+    document.getElementById("pointsCount").textContent =
+        readData("aiNexusPoints", 0);
+}
+
+/* INITIALIZE */
+
+showNotes();
+renderTasks();
+renderQuestion();
+updateStats();
+
 </script>
 
 </body>
